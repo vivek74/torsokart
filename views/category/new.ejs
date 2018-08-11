@@ -1,0 +1,173 @@
+<% include ../partials/header %>
+
+<!-- new add new page -->
+
+<div class="container paddingTopBottom" style="background-color: #f8eee7;">
+  <div class="row">
+    <div class="col-lg-3">
+      <% include ../ajax/uploadpic%>
+    </div>
+    <div class="col-lg-9">
+
+      <div class="container" style="background-color: white;">
+        <form action="/category/upload" method="POST" enctype="multipart/form-data">
+          <div class="input-group pt-4">
+            <div class="custom-file">
+              <input type="file" name="myImage" class="custom-file-input">
+              <label class="custom-file-label">Choose file . . .</label>
+            </div>
+            <div class="input-group-append">
+              <button class="btn btn-outline-warning btn-warning" type="submit" required>Select</button>
+            </div>
+          </div>
+          <hr>
+        </form>
+
+        <form action="/category/new" method="POST">
+          <div class="form-group">
+            <label for="image">Image Url</label>
+              <input type="text" class="form-control" name="image" id="image" value="<%= typeof file != 'undefined' ? file : '' %>">
+          </div>
+
+          <div class="form-group">
+            <label for="exampleFormControlSelect1">Select type</label>
+            <select class="form-control" name="category" id="exampleFormControlSelect1">
+              <option class="mt-4">quotes</option>
+              <option class="mt-4">pattern</option>
+              <option class="mt-4">states</option>
+              <option class="mt-4">southindian</option>
+              <option class="mt-4">sports</option>
+              <option class="mt-4">trending</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="T-Shirt name" required>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <div class="form-group">
+                <label for="serial_no">Colour</label>
+                <input type="text" name="colour" id="colour" class="form-control" placeholder ="Colour" required>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <div class="form-group">
+                <label for="product_no">Product number</label>
+                <input type="text" name="product_no" id="product_no" class="form-control" placeholder ="product no" required>
+              </div>
+            </div>
+          </div>          
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <div class="form-group">
+                <label for="category">Fabric care</label>
+                <input type="text" name="fabriccare" id="fabriccare" class="form-control" value="Do not bleach, Wash gently, Do not use brush on the design" required>
+              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <div class="form-group">
+                <label for="category">Print type</label>
+                <input type="text" name="fit" id="fit" class="form-control" value="Water based printing" required>
+              </div>
+            </div>
+          </div>
+                          
+          <div class="form-group">
+            <label for="orignal_price">Orignal cost</label>
+            <input type="number" name="orignal_price" id="orignal_price" class="form-control" value="799" required>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="cost">Cost</label>
+              <input type="number" name="cost" id="cost" class="form-control" value="449" step="0.01" min="0" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="category">Necktype</label>
+              <input type="text" name="necktype" id="necktype" class="form-control" value="Round neck" required>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="fabric">Fabric</label>
+              <input type="text" name="fabric" id="fabric" class="form-control" value="100 % Cotton" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="sleave">Sleeve</label>
+              <input type="text" name="sleave" text="sleave" class="form-control" value="Half sleeve" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="sutable">Suitable</label>
+              <input type="text" name="sutable" id="sutable" class="form-control" value="Western wear" required>
+           </div>
+          </div>
+
+          <hr>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                  <label for="size1">Size 1</label>
+                  <input type="text" name="size1" text="size1" class="form-control" value="S" required>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                  <label for="size2">Size 2</label>
+                  <input type="text" name="size2" text="size2" class="form-control" value="M" required>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                  <label for="size3">Size 3</label>
+                  <input type="text" name="size3" text="size3" class="form-control" value="L" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                  <label for="size4">Size 4</label>
+                  <input type="text" name="size4" text="size4" class="form-control" value="XL" required>
+                </div>
+              </div>
+              <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                  <label for="size5">Size 5</label>
+                  <input type="text" name="size5" text="size5" class="form-control" value="XXL" required>
+                </div>
+              </div>              
+            </div>
+          </div>
+          
+          <hr>
+          <div class="form-group pb-4">
+            <label for="description">Description</label>
+            <textarea type="text" name="description" id="description" class="form-control" rows="3" required></textarea>
+          </div>
+          <div class="row pb-4">
+            <div class="col-lg-6">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-lg-6">
+              <button type="submit" class="btn btn-primary float-right" onclick="window.location.href='/anime'">Preview</button>
+            </div>
+          </div>
+                        
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<% include ../partials/footer %>
+

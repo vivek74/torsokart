@@ -1,0 +1,35 @@
+<% if(!currentUser){%>
+  <li class="nav-item">
+    <a style="cursor: pointer;" data-toggle="modal" data-target="#loginModal" class="nav-link menu">
+                <i class="fas fa-sign-in-alt"></i> Login
+              </a>
+            </li>
+          <%} else {%>
+
+            <li class="nav-item dropdown menu " id="dropdown-edit">
+              <a class="nav-link dropdown-toggle menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user" aria-hidden="true"></i><% if(!currentUser){ %> &nbsp Login <%} else {%> <%=currentUser.firstName%> <% } %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if(!currentUser){ %>
+                  <a class="dropdown-item" href="/login"><i class="fa fa-user" aria-hidden="true"></i> &nbsp Your Account</a>
+                <%} else {%>
+                  <a class="dropdown-item" href="/users/<%=currentUser.id%>"><i style="color: #17a2b8;" class="fa fa-user" aria-hidden="true"></i> &nbsp PROFILE</a>
+                  <a class="dropdown-item" href="/orders/<%=currentUser.id%>"><i style="color: #17a2b8;" class="fab fa-first-order"></i>&nbsp Orders</a>
+                <% } %>
+                
+                <div class="dropdown-divider"></div>
+
+                  <% if(!currentUser){ %>
+                  <div class="container">
+                    <button type="button" onclick="location.href='/login'" class="btn btn-primary btn-sm">LOGIN</button>
+
+                    <button type="button" onclick="location.href='/register'" class="btn btn-primary btn-sm ml-3">Sign Up</button>
+                  </div>
+                <%} else {%>
+                  <a class="dropdown-item" style="cursor: pointer;" id="logoutAjaxSubmit"><i style="color: #17a2b8;" class="fas fa-sign-out-alt"></i>&nbsp Logout</a>
+                <% } %>
+                 
+              </div>
+            </li>
+          <%}%>

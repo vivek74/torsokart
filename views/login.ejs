@@ -1,0 +1,95 @@
+<% include ./partials/header %>
+    <header id="home-section">
+    <div class="dark-overlay">
+      <div class="home-inner">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 d-none d-md-block">
+              <h4 style="color: white;">Wear Awesome And Cool T-Shirts. Get your T-shirts instantly with our free Home delivery service.</h4>
+                <div class="d-flex flex-row">
+                  <div class="p-4 align-self-start">
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="p-4 align-self-end">
+                    Wide range of designs from numerous categories.
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row">
+                  <div class="p-4 align-self-start">
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="p-4 align-self-end">
+                    Best Trending designs available at affordable prices.
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row">
+                  <div class="p-4 align-self-start">
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="p-4 align-self-end">
+                    Enjoy the option of cash on delivery.
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row">
+                  <div class="p-4 align-self-start">
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="p-4 align-self-end">
+                    Variants of T-Shirt designs avaliable in multiple colors.
+                    "Always wear awesome because clothes reflect who you are".
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-primary card-form text-center">
+                <div class="card-block" id="login-card">
+                  <h3>Sign In</h3>
+                  <p>Please enter details to login</p>
+                  <div class="container paddingTop">
+                    <% if(error && error.length > 0) { %>
+                      <div class="alert alert-danger ">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <p><%=error %></p>
+                      </div>
+                    <% } %>
+                    <% if(success && success.length > 0) { %>
+                      <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <p><%= success %></p></div>
+                    <% } %>
+                  </div>
+                  <form action="/login" method="post">
+                    <div class="form-group">
+                      <input type="text" name="username" class="form-control form-control-lg" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                      <input type="password" name="password" class="form-control form-control-lg" placeholder="Password">
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-light btn-block">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <a style="display: inline;" href="/forgot" id="login-forgot" class="float-left mt-1">Forgot?</a>
+                      </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <a class="text-right" href="/register" id="login-forgot" class="float-left mt-1">Sign Up</a>
+                      </div>
+                    </div>
+                    
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+<% include ./partials/footer %>
+

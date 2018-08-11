@@ -1,0 +1,95 @@
+
+				<div class="row">
+					<div class="col-lg-8 mt-3">
+						<div class="card">
+						  <div>
+						    <p class="mobile_cart_view">MY CART
+						    	<% if(session.cart) { %>
+		                			<span >(<%= session.cart.totalQty %>)</span>
+		              			<% } %>
+		              		</p>
+		              		<div class="float-right" style=" border-bottom: 2px solid #17a2b8;">
+		              			<p class="mobile_cart_gps"><i class="fas fa-map-marker-alt"></i> Delivered in LPU only</p>
+		              		</div>
+						    
+						    <hr style="margin: 0;">
+						  </div>
+						  <div class="card-body-costom">
+						    <ul class="list-group list-group-flush">
+						      <% products.forEach(function(products){ %>
+							  <li class="list-group-item">
+							  	<div class="row">
+							  		<div class="col-lg-4 col-md-12" >
+							  			<div class="float-left mobil_view_cart_img">
+									  		<img class="card-img-top" src="<%= products.item.image %>" alt="Card image cap">
+										</div>
+							  		</div>
+							  		
+							  		<div class="col-lg-8 col-md-12">
+							  			<div class="row">
+							  				<div class="col-lg-9 col-md-9 col-sm-9 col-9">
+							  					<h6 class="float-left mt-2"><%=products.item.name%></h6>
+							  				</div>
+							  				<div class="col-lg-3 col-md-3 col-sm-3 col-3">
+							  					<p class="text-right ">QTY: <span class="badge badge-success"><%= products.qty%></span></p>
+							  				</div>
+							  			</div>
+							  			<p class="text-left" style="color: green;"><strike style="color: #696e79;">₹<%=products.orgcost%>/- </strike>&nbsp &nbsp &nbsp₹ <%=products.cost%>/-</p>
+							  			<p class="text-left">Size - <%=products.size%></p>
+
+							  			<% if(session.cart) { %>
+
+							  			<div class="row">
+							  				<div class="col-lg-6 col-md-6 col-sm-6 col-6">
+							  					<div class="btn-group" role="group" aria-label="Basic example">
+												  <button type="button" class="btn-sm btn btn-info" onclick="location.href='/reduce/<%=products.item._id%>'"><i class="fas fa-minus-circle"></i>
+												  </button>
+												  <input style="width: 15%; text-align: center;" type="text" value="<%= products.qty %>">
+												  	<button type="button" onclick="location.href='/increase/<%=products.item._id%>'" class="btn-sm btn btn-info"><i class="fas fa-plus-circle"></i>
+												  	</button>
+												</div>
+							  				</div>
+							  				<div class="col-lg-6 col-md-6 col-sm-6 col-6">
+												<p onclick="location.href='/remove/<%=products.item._id%>'" style="color: red; cursor: pointer; font-size: 1.5rem;"><i class="fas fa-trash-alt"></i></p>
+											</div>
+							  			</div>
+										<% } %>
+							  		</div>
+							  		
+							  	</div>
+							  </li>	  
+							  <%});%>
+							</ul>
+							<% if(session.cart) { %>
+							<div class="container-fluid">
+								
+								<div class="mt-3 float-right" style="display: inline;">
+									<button id="mobile_cart_place" onclick="location.href='/checkout'" type="button" class="btn btn-warning">PLACE ORDER <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+								</div>
+								<div class="mt-3 float-right" style="display: inline;">
+									<button id="mobile_cart_place2" onclick="location.href='/checkout'" type="button" class="btn btn-warning btn-sm">PLACE ORDER <i class="fa fa-angle-double-right" aria-hidden="true"></i></button>
+								</div>
+								<a href="/terms_and_conditions" class="float-left mt-3 terms">Terms and conditions</a>	
+							</div>
+							<% } %>
+							
+						  </div>
+						</div>
+					</div>
+					<div class="col-lg-4 mt-3">
+						<div class="card mb-3">
+						 	<div class="mobile_cart_view">PRICE DETAILS</div>
+						 	<hr style="margin: 0;">
+						 	<div class="card-body text-primary">
+								<p class="card-title" style="color: #212121;">Price <span class="float-right">₹ <%=totalOrgCost%> /- </span></p>
+
+								<p class="card-title" style="color: #212121;">Discount <span class="float-right">- ₹ <%=(totalOrgCost-totalCost)%> /- </span></p>
+						    
+						    	<p class="card-title" style="color: #212121;">Delivery Charges<span class="float-right" style="color: green;"> FREE</span></p>
+						    	<hr>
+						    	<p class="card-title mobile_cart_view" style="color: #212121;">Amount Payable <span class="float-right" style="color: green;">₹ <%=totalCost%> /- </span></p>
+						  	</div>
+						</div>
+					</div>
+				</div>
+			

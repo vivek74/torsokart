@@ -1,0 +1,91 @@
+<% include ../partials/header %>
+<% if(currentUser && currentUser.isAdmin){ %>
+<div class="container paddingTopBottom">
+	<div class="card">
+	  <div class="card-body">
+        <h4 style="text-align: center;">Create New Entry</h4>
+	  	<form action="/dashbord/banners" method="POST">
+        <div class="form-group">
+            <div class="form-group col-md-6">
+                <label for="category">Category</label>
+                <input type="text" name="category" text="category" class="form-control" placeholder="anime" required>
+            </div>
+	    <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                    <label for="banner1">First Banner</label>
+                    <input type="text" name="banner1" text="banner1" class="form-control" placeholder="Image url" required>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                    <label for="banner2">Second Banner</label>
+                    <input type="text" name="banner2" text="banner2" class="form-control" placeholder="Image url" required>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                    <label for="banner3">Third Banner</label>
+                    <input type="text" name="banner3" text="banner3" class="form-control" placeholder="Image url" required>
+                </div>
+            </div>
+        </div>
+    	</div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    	</form>
+	  </div>
+	</div>
+</div>
+<!--Edit-->
+
+<div class="container paddingTopBottom">
+    <div class="card">
+      <div class="card-body">
+        <h4 style="text-align: center;">Edit Same Entry</h4>
+        <form action="/dashbord/banners?_method=PUT" method="POST">
+        <div class="form-group">
+            <div class="form-group col-md-6">
+                <label for="category">Category</label>
+                <input type="text" name="category" text="category" class="form-control" placeholder="anime" required>
+            </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                    <label for="banner1">First Banner</label>
+                    <input type="text" name="banner1" text="banner1" class="form-control" placeholder="Image url" required>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                    <label for="banner2">Second Banner</label>
+                    <input type="text" name="banner2" text="banner2" class="form-control" placeholder="Image url" required>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                    <label for="banner3">Third Banner</label>
+                    <input type="text" name="banner3" text="banner3" class="form-control" placeholder="Image url" required>
+                </div>
+            </div>
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+</div>
+<%} else{%>
+<div class="container paddingTopBottom">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card border-primary mb-3">
+                  <div class="card-header" style="background-color: #2969b0; color: white;">ERROR</div>
+                  <div class="card-body text-primary">
+                    <h5 class="card-title">ADMIN AREA</h5>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<%}%>
+<% include ../partials/footer %>

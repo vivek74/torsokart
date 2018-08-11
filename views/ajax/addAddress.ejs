@@ -1,0 +1,52 @@
+<div class="address-mobile"> 
+
+	<% foundUser.addresses.reverse().forEach(function(newaddress){ %>
+		<div class="card mt-2">
+	  		<div class="card-body">
+	  			<div class="row">
+	  				<!-- <div class="col-lg-1 col-md-1 col-sm-1 col-1">
+	  					<label class="radio_container">
+						  <input type="radio" id="hide_radio" name="hide">
+						  <span class="checkmark"></span>
+						</label>
+	  				</div> -->
+	  				<div class="col-lg-8 col-md-8 col-sm-8 col-8">
+	  					<p style="font-weight: bold; margin: 0; padding: 0; color: #17a2b8;"><%=newaddress.firstName%> <%=newaddress.lastName%> &nbsp &nbsp  (<%=newaddress.phoneNo%>)</p>
+	    				<p style="padding: 0; margin: 0;"><%=newaddress.hostelNo%> - <%=newaddress.roomNo%></p>
+	  				</div>
+	  				<div class="col-lg-2 col-md-2 col-sm-2 col-2">
+	  					<form class="delete-form" action="/check/add/<%=newaddress.id%>?_method=DELETE" method="POST">
+							<button style="background-color: transparent; border: 0; padding: 0; margin: 0; font-weight: bold;" class="add-con-font card-text p-button checkout_address">
+									DELETE 
+							</button>
+						</form>
+	  				</div>	
+	  			</div>
+	  			
+	  			<button class="button_hide btn btn-warning btn-sm mt-3" onclick='selectAdd("<%= foundUser._id %>", "<%=newaddress.id%>")'>Deliver here &nbsp <span class="lodingLogin"> <img src="/img/logo/comment-ajax.gif" class="img-responsive" /></span></button>
+	  				
+	  		</div>
+		</div>
+
+		<!-- <script>
+		$(function() {
+		    $('input[name=hide]').on('click init-hide', function() {
+		        $('.button_hide').toggle($('#hide_radio').prop('checked'));
+		    }).trigger('init-hide');
+		});
+		</script> -->
+		
+
+	<%})%>
+
+	
+
+	<div class="card mt-2">
+  		<div style="cursor: pointer;" class="card-body card-1" data-toggle="modal" data-target="#exampleModalCenter">
+    		<p style="margin: 0; padding: 0;" ><i style="color: red;" class="fas fa-plus"></i> &nbsp Add a new address</p>
+  		</div>
+	</div>
+	
+</div>
+	
+

@@ -1,0 +1,48 @@
+<div class="container">
+	<div class="row">
+		<% showbestdeals.forEach(function(items){%>
+			<div class="col-lg-3 col-md-3 col-3 mt-4 animated slideInUp d-flex">
+
+				<div class="card flex-fil card-1" style="width: 14rem;">
+					<a target="_blank" href="/category/<%= items.category %>/<%= items._id %>"><img class="card-img-top " src="<%=items.image %>" alt="Card image cap"></a>
+					<div class="card-body" id="card-edit">
+		                <p class="index-font"><%= items.name %></p>
+		                <p class="card-text float-left" id="c1" style="color: black;">
+		                  <strike id="c2" class="dis_mob">
+		                    ₹<%= items.orignal_price %>
+		                  </strike>&nbsp &nbsp
+		                  ₹<%= items.cost %>/-
+		                </p>
+		                <p id="num4" class="card-text float-right" style="color: red;"><%= Math.floor(100-((items.cost * 100)/items.orignal_price)) %>%OFF</p>
+		            </div>
+				</div>
+
+
+			</div>
+		<%});%>
+	</div>
+	<div>
+        <div class="ajax-loader-page justify-content-center">
+            <img src="/img/logo/ajax-loader-page.gif" class="img-responsive" />
+            <p style="text-align: center;">Please wait...</p>
+        </div>
+      </div>
+	<!-- pagnination of all t-shirts -->
+	<nav aria-label="Page navigation example" style="padding-bottom: 2em;">
+	  <ul class="pagination justify-content-center mt-5">
+	  	<% for(var i=1; i < 3; i++ ){%>
+	  		<% if(i == current){ %>
+	    		<li class="page-item active"><a class="page-link" onclick='bestDeals(<%=i%>)' href="/allproduct/<%=i%>"><%=i%><span class="sr-only"></span></a>
+			    </li>
+	    	<% } else { %>
+	    		<li class="page-item"><a class="page-link" onclick='bestDeals(<%=i%>)'><%=i%></a></li>
+	    	<%}%>
+		<%}%>    
+
+	    <li class="page-item">
+	      <a class="page-link" href="/category/allproducts">Show all</a>
+	    </li>
+	  </ul>
+	</nav>
+</div>
+	

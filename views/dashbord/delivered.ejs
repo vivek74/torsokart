@@ -1,0 +1,57 @@
+<% include ../partials/header %>
+
+<% if(currentUser && currentUser.isAdmin){ %>
+<div class="container-fluid paddingTopBottom">
+	<div class="card text-center">
+	  <div class="card-header" style="background-color: #2969b0; color: white; font-size: 1.3rem;">
+	    <i class="fas fa-users"></i> USER DETAILS
+	  </div>
+	  <div class="card-body">
+	    <table class="table">
+		  <thead class="thead-dark">
+		    <tr>
+		      <th scope="col">User</th>
+		      <th scope="col">Date</th>
+		      <th scope="col">User Id</th>
+		      <th scope="col">Payment Id</th>
+		      <th scope="col">Payment Type</th>
+		      <th scope="col">Status</th>
+		      <th scope="col">Total Price</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		  	<% allorders.reverse().forEach(function(orders){ %>
+		    <tr>
+		      <th scope="row"><i class="fas fa-user"></i></th>
+		      <td><%= moment(orders.createdOrderAt).format("DD-MMM") %></td>
+		      <td><a href="/dashbord/orders/<%=orders.user%>"><%=orders.user%></a></td>
+		      <td><%=orders.paymentId%></td>
+		      <td><%=orders.paymentType%></td>
+		      <td><%=orders.status%></td>
+		      <td><i class="fas fa-rupee-sign"></i> <%=orders.cart.totalCost%>/-</td>
+		    </tr>
+		    <%});%>
+		  </tbody>
+		</table>
+	  </div>
+	</div>
+</div>
+<%} else{%>
+<div class="container paddingTopBottom">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card border-primary mb-3">
+				  <div class="card-header" style="background-color: #2969b0; color: white;">ERROR</div>
+				  <div class="card-body text-primary">
+				    <h5 class="card-title">ADMIN AREA</h5>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+<%}%>
+<%include ../partials/footer %>
+
+
+
+		

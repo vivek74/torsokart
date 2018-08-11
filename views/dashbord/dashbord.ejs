@@ -1,0 +1,118 @@
+<% include ../partials/header %>
+<% if(currentUser && currentUser.isAdmin){ %>
+<div class="container paddingTopBottom">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="card mb-3 text-center">
+			  <div class="card-header" style="background-color: #6A8A82; color: white; font-size: 2rem;"><i class="fas fa-lock"></i> Dashbord</div>
+			  <div class="card-body text-primary">
+			    <div class="row">
+			    	<div class="col-lg-4">
+
+			    		<div onclick="location.href='dashbord/users'" class="card text-white mb-3" style="max-width: 18rem; background-color:#6A8A82">
+						  <div class="card-header">USERS</div>
+						  <div class="card-body" style="text-align: center;">
+						    <i class="fa fa-users dash_icon" style="font-size: 8rem;" aria-hidden="true"></i>
+						  </div>
+						</div>
+			    		
+			    	</div>
+
+			    	<div class="col-lg-4">
+			    		
+			    		<div onclick="location.href='dashbord/orders'" class="card text-white mb-3" style="max-width: 18rem; background-color:#6A8A82;">
+						  <div class="card-header">ALL ORDERS</div>
+						  <div class="card-body" style="text-align: center;">
+						    <i class="fab fa-first-order dash_icon" style="font-size: 8rem;"></i>
+						  </div>
+						</div>
+
+			    	</div>
+
+			    	<div class="col-lg-4">
+			    		
+			    		<div onclick="location.href='dashbord/products'" class="card text-white mb-3" style="max-width: 18rem; background-color:#6A8A82;">
+						  <div class="card-header">ALL PRODUCT</div>
+						  <div class="card-body" style="text-align: center;">
+						    <i class="fab fa-product-hunt dash_icon" style="font-size: 8rem;" ></i>
+						  </div>
+						</div>
+
+			    	</div>
+
+			    	<div class="col-lg-4">
+
+			    		<div onclick="location.href='dashbord/online'" class="card text-white mb-3" style="max-width: 18rem; background-color:#6A8A82;">
+						  <div class="card-header">ONLINE PAYMENT</div>
+						  <div class="card-body" style="text-align: center;">
+						    <i class="fa fa-credit-card dash_icon" style="font-size: 8rem;" aria-hidden="true"></i>
+						  </div>
+						</div>
+			    		
+			    	</div>
+
+			    	<div class="col-lg-4">
+
+			    		<div onclick="location.href='dashbord/offline'" class="card text-white mb-3" style="max-width: 18rem; background-color:#6A8A82;">
+						  <div class="card-header">OFFLINE PAYMENT</div>
+						  <div class="card-body" style="text-align: center;">
+						    <i class="fas fa-book dash_icon" style="font-size: 8rem;"></i>
+						  </div>
+						</div>
+			    		
+			    	</div>
+
+			    	<div class="col-lg-4">
+
+			    		<div onclick="location.href='dashbord/todaysOrder'" class="card text-white mb-3" style="max-width: 18rem; background-color:#6A8A82">
+						  <div class="card-header">TODAY'S ORDER</div>
+						  <div class="card-body" style="text-align: center;">
+						    <i class="fas fa-text-height dash_icon" style="font-size: 8rem;"></i>
+						  </div>
+						</div>
+			    		
+			    	</div>
+
+			    	<div class="col-lg-4">
+
+			    		<div onclick="location.href='dashbord/undelivered'" class="card text-white mb-3" style="max-width: 18rem; background-color:#6A8A82;">
+						  <div class="card-header">UNDELIVERED</div>
+						  <div class="card-body" style="text-align: center;">
+						    <i class="fa fa-list-alt dash_icon" style="font-size: 8rem;" aria-hidden="true"></i>
+						  </div>
+						</div>
+			    		
+			    	</div>
+
+			    	<div class="col-lg-4">
+
+			    		<div onclick="location.href='dashbord/delivered'" class="card text-white mb-3" style="max-width: 18rem; background-color:#6A8A82;">
+						  <div class="card-header">DELIVERED</div>
+						  <div class="card-body" style="text-align: center;">
+						    <i class="fa fa-list-alt dash_icon" style="font-size: 8rem;" aria-hidden="true"></i>
+						  </div>
+						</div>
+			    		
+			    	</div>
+
+			    </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</div>
+<%} else{%>
+	<div class="container paddingTopBottom">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card border-primary mb-3">
+				  <div class="card-header" style="background-color: #2969b0; color: white;">ERROR</div>
+				  <div class="card-body text-primary">
+				    <h5 class="card-title">ADMIN AREA</h5>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+<%}%>
+<% include ../partials/footer %>

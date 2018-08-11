@@ -1,0 +1,36 @@
+<% include ./partials/header %>
+	<% if(session.cart) { %>
+		<% if(session.cart.totalQty === 0){%>
+			<div class="container paddingTopBottom madeContainer">
+				<div class="card text-center">
+					
+					<div class="card-body" style="height: 25rem;">
+						<div>
+							<img style="height: 15rem;" src="/img/logo/cart.png">
+						</div>
+						
+						<a href="/" class="btn btn-primary btn-sm mt-4 ml-5">Shop Now <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+					</div>
+				</div>
+			</div>
+		<%}else{%>
+			<div id="showAdd" class="container">
+
+				<% include ./ajax/increaseQty %>
+
+			</div>
+		<%}%>
+	<%}else{%>
+		<div class="container paddingTopBottom madeContainer">
+			<div class="card text-center">
+				<div class="card-body" style="height: 25rem;">
+					<div>
+						<img style="height: 15rem;" src="/img/logo/cart.png">
+					</div>
+					
+					<a href="/" class="btn btn-primary btn-sm mt-4 ml-5">Shop Now <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+				</div>
+			</div>
+		</div>
+	<%}%>
+<%include ./partials/footer%>

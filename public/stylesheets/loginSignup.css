@@ -1,0 +1,76 @@
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+
+.form-login {
+  font-family: 'Titillium Web', sans-serif;
+  background: rgba(19, 35, 47, 0.9);
+
+  padding: 40px;
+  max-width: 600px;
+
+  border-radius: 4px;
+}
+
+.tab-group-login {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 15px 0;
+}
+.tab-group-login:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.tab-group-login li a {
+  display: block;
+  text-decoration: none;
+  padding: 10px;
+  background: rgba(160, 179, 176, 0.25);
+  color: #98a09f;
+  font-size: 16px;
+  float: left;
+  width: 50%;
+  text-align: center;
+  cursor: pointer;
+  transition: .5s ease;
+}
+.tab-group-login li a:hover {
+  background: #af87ab;
+  color: #ffffff;
+}
+.tab-group-login .active a {
+  background: #94618E;
+  color: #ffffff;
+}
+
+.tab-content-login > div:last-child {
+  display: none;
+}
+
+.h1-login {
+  text-align: center;
+  color: #ffffff;
+  font-weight: 300;
+  margin: 0 0 40px;
+}
+
+
+.hr-sect {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color: white;
+  margin: 8px 0px;
+}
+.hr-sect::before,
+.hr-sect::after {
+  content: "";
+  flex-grow: 1;
+  background: white;
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0px 8px;
+}

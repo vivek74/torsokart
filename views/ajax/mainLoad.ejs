@@ -1,0 +1,76 @@
+<div class="ajax-loader">
+    <img src="/img/logo/ajax-loader.gif" class="img-responsive" />
+</div>
+<div class="row text-center" id="category-grid">
+        <% category.forEach(function(category){ %>
+          <div class="col-md-3 col-sm-6 col-xs-6 card_mobile_view animated slideInUp mb-4 d-flex">
+            <div class="card-1 flex-fil" style="background-color: white;">
+              <a target="_blank" href="/category/<%= category.category %>/<%= category._id %>"><img class="card-img-top " src="<%= category.image %>" alt="Card image cap"></a>
+              <div class="card-body" id="card-edit">
+                <p class="index-font"><%= category.name %></p>
+                <!-- <hr id="mobile_view_hr"> -->
+                <p class="card-text float-left" id="c1" style="color: black;">
+                  <strike id="c2" class="dis_mob">
+                    ₹<%= category.orignal_price %>
+                  </strike>&nbsp &nbsp
+                  ₹<%= category.cost %>/-
+                </p>
+                <p id="num4" class="card-text float-right" style="color: red;"><%= Math.floor(100-((category.cost * 100)/category.orignal_price)) %>%OFF</p>
+              </div>  
+            </div>
+          </div>
+        <%});%>
+      </div>
+
+      <div>
+        <div class="ajax-loader-page">
+            <img src="/img/logo/ajax-loader-page.gif" class="img-responsive" />
+            <p style="text-align: center;">Please wait...</p>
+        </div>
+      </div>
+<% if (pages > 1) { %>
+    <nav aria-label="Page navigation example" style="margin-bottom: 5em;">
+      <ul class="pagination justify-content-center">
+        <% if (current == 1) { %>
+          <li class="page-item disabled">
+            <a class="page-link" onclick='mainPageLoad(1,"<%=showCategories%>")' tabindex="-1">First</a>
+          </li>
+        <% } else { %>
+            <li class="page-item">
+              <a class="page-link" onclick='mainPageLoad(1,"<%=showCategories%>")' tabindex="-1">First</a>
+            </li>
+        <% } %>
+        <% var i = (Number(current) > 5 ? Number(current) - 4 : 1) %>
+        <% if (i !== 1) { %>
+            <li class="page-item">
+              <a class="page-link" >...</a>
+            </li>
+        <% } %>
+
+        <% for (i=1; i <= (Number(current) + 4) && i <= pages; i++) { %>
+          <% if (i == current) { %>
+            <li class="page-item active">
+              <a class="page-link" onclick='mainPageLoad(<%=i%>,"<%=showCategories%>")'><%=i%><span class="sr-only"></span></a>
+            </li>
+          <% } else { %>
+              <li class="page-item"><a class="page-link" onclick='mainPageLoad(<%=i%>,"<%=showCategories%>")'><%=i%></a></li>
+          <% } %>
+          <% if (i == Number(current) + 4 && i < pages) { %>
+              <li class="page-item">
+                <a class="page-link">...</a>
+              </li>
+          <% } %>
+        <% } %>
+        <% if (current == pages) { %>
+          <li class="page-item disabled">
+            <a class="page-link" onclick='mainPageLoad(<%= pages %>, "<%=showCategories%>")' tabindex="-1">Last</a>
+          </li>
+        <% } else { %>
+          <li class="page-item">
+            <a class="page-link" onclick='mainPageLoad(<%= pages %>, "<%=showCategories%>")' tabindex="-1">Last</a>
+          </li>
+        <% } %>
+
+      </ul>
+    </nav>
+<%}%>

@@ -1,0 +1,238 @@
+<% include ../partials/header %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/radioButton.css">
+<div class="container top">
+    <div class="row">
+        <main class="p-l-2 p-t-2" id='content'>
+          <a href="#sidebar" style="position: absolute;" data-toggle="collapse"><i class="fas fa-bars fa-3x"></i>
+          </a>
+
+            <!-- product description-->
+          <div id='content'>
+              <div class="card margin_bot" style="padding: 1em 1em 1em 1em; border-radius: 0;">
+                <div class="container-fliud">
+                  <div class="wrapper row">
+                    <div class="preview col-md-6" style="padding: 0px;">
+                      <div class="preview-pic tab-content">
+                        <div class="tab-pane active" id="pic-1"><img src="<%=category.image%>" /></div>
+                        <% if(currentUser && category.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
+                          <button type="button" class="btn btn-success btn-sm" onclick="window.location.href='/category/<%=category.category%>/<%= category._id %>/edit'">Edit</button>
+                          <form action="/category/<%=category.category%>/<%= category._id %>?_method=DELETE" method="POST" class="delete-form">
+                            <button class="btn btn-danger btn-sm">Delete</button>
+                          </form>
+                        <%}%>
+                      </div>
+                    </div>
+                    <div class="details col-md-6 mobile_view_table" style="padding-right: 0px;">
+                      <h5 class="product-title" style="font-family: 'Raleway', sans-serif; color: black;"><%=category.name%></h5>
+                      <div class="rating"></div>
+
+                      <table style="width:100%">
+                        <tr>
+                          <td><p class="table_show_view" style="font-weight: bold;">Price:</p></td>
+                          <td>
+                            <p>
+                              <ul class="table_show_view">
+                                <p style="margin-left: 1em; margin-bottom: 0; color: red;"><strike style="color: #696e79;">₹<%=category.orignal_price%>/- </strike>&nbsp &nbsp &nbsp(<%= Math.floor(100-((category.cost * 100)/category.orignal_price)) %>% OFF) </p>
+                                <p style="margin-left: 1em; margin-bottom: 0; font-weight: bold; color: black;">₹<%=category.cost%>/-</p>
+                              </ul>
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><p class="table_show_view" style="font-weight: bold;">Delivered:</p></td>
+                          <td>
+                            <p class="delivery2 table_show_view"><span style="margin-left: 4em; color: red;">Only in LPU</span></p>
+                            <p style="margin-left: 4em;">3-5 day delivery</p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><p class="table_show_view" style="font-weight: bold;">Highlights:</p> </td>
+                          <td>
+                            <p> 
+                                <ul class="highlights table_show_view" style="margin-left: 2em; ">
+                                  <li>Fabric: <%=category.fabric%></li>
+                                  <li>Sleeve: <%=category.sleave%></li>
+                                  <li>Suitable: <%=category.sutable%></li>
+                                  <li>Print type: <%=category.fit%></li>
+                                  <li>Neck type: <%=category.necktype%></li>
+                                </ul>
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><p class="table_show_view" style="font-weight: bold;">sizes:</p></td>
+                          <td>
+                             <div class="containerButton">
+                                <div class="radio-tile-group">
+
+                                  <div class="input-container">
+                                    <input id="<%=category.size1%>" name="size" class="radio-button" value="<%=category.size1%>" type="radio" />
+                                    <div class="radio-tile">
+                                      <label id="<%=category.size1%>" class="radio-tile-label"><%=category.size1%></label>
+                                    </div>
+                                  </div>
+
+                                  <div class="input-container">
+                                    <input id="<%=category.size2%>" class="radio-button" value="<%=category.size2%>" type="radio" name="size" />
+                                    <div class="radio-tile">
+                                      <label for="bike" class="radio-tile-label"><%=category.size2%></label>
+                                    </div>
+                                  </div>
+
+                                  <div class="input-container">
+                                    <input id="<%=category.size3%>" class="radio-button" value="<%=category.size3%>" type="radio" name="size" />
+                                    <div class="radio-tile">
+                                      <label for="drive" class="radio-tile-label"><%=category.size3%></label>
+                                    </div>
+                                  </div>
+
+                                  <div class="input-container">
+                                    <input id="<%=category.size4%>" class="radio-button" value="<%=category.size4%>" type="radio" name="size" />
+                                    <div class="radio-tile">
+                                      <label for="bike" class="radio-tile-label"><%=category.size4%></label>
+                                    </div>
+                                  </div>
+
+                                  <div class="input-container">
+                                    <input id="<%=category.size5%>" class="radio-button" value="<%=category.size5%>" type="radio" name="size" />
+                                    <div class="radio-tile">
+                                      <label for="bike" class="radio-tile-label"><%=category.size5%></label>
+                                    </div>
+                                  </div>
+                                  
+                                    <!-- Modal -->
+                                  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLongTitle">Size chart</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <table class="table">
+                                            <thead>
+                                              <tr>
+                                                <th scope="col"><p>Size</p></th>
+                                                <th scope="col"><p>Chest(in)</p></th>
+                                                <th scope="col"><p>Front Length(in)</p></th>
+                                                <th scope="col"><p>Across Shoulder(in)</p></th>
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr>
+                                                <th scope="row"><p>S</p></th>
+                                                <td><p>36.0</p></td>
+                                                <td><p>27.0</p><p></td>
+                                                <td><p>16.5</p></td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row"><p>M</p></th>
+                                                <td><p>38.0</p></td>
+                                                <td><p>27.5</p></td>
+                                                <td><p>17.0</p></td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row"><p>L</p></th>
+                                                <td><p>40.0</p></td>
+                                                <td><p>28.0</p></td>
+                                                <td><p>17.5</p></td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row"><p>XL</p></th>
+                                                <td><p>42.0</p></td>
+                                                <td><p>29.0</p></td>
+                                                <td><p>18.0</p></td>
+                                              </tr>
+                                              <tr>
+                                                <th scope="row"><p>XXL</p></th>
+                                                <td><p>44.0</p></td>
+                                                <td><p>30.0</p></td>
+                                                <td><p>18.5</p></td>
+                                              </tr>
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Close</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                          </td>
+                        </tr>
+                      </table>
+                      <form >
+                        <input id="sizehide" type="text" hidden name="size" >
+                        <div class="action">
+                            
+                          <div class="container">
+                            <button id="add_to_cart" onclick='cartUpdate("<%=category._id%>")' class="btn btn-warning bt-sm" type="submit">Add to cart &nbsp <span class="lodingLogin"> <img src="/img/logo/comment-ajax.gif" class="img-responsive" /></span></button>
+                            <button id="add_to_cart" type="button" class="btn btn-warning bt-sm float-right " data-toggle="modal" data-target="#exampleModalCenter">Size chart</button>
+                          </div>
+                            
+                        </div>
+                      </form>
+
+                      <script>
+                        $( "input" ).on( "click", function() {
+                          $( "#sizehide" ).val( $( "input:checked" ).val());
+                        });
+
+                        $(function(){
+                          var button = $('#add_to_cart');
+                          button.attr('disabled','disabled');
+                          $('input[name=size]').change(function(e){
+                              button.removeAttr('disabled');
+                          });
+                        });
+                      </script>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </main>
+
+        <div class="container-fliud-comment">
+          <hr style="padding: 0; margin: 0;">
+          <div class="card card2" style="padding: 35px;">
+            <p class="show_comments_topic">Description:</p>
+            <p class="show_comments_disp"><%= category.description %></p>
+            <hr>
+            <p class="show_comments_topic">Comments:</p>
+            <form id="comment_data" data-categoryname="<%= category.category%>" data-categoryid="<%= category._id %>" action="/category/<%= category.category%>/<%= category._id %>/comments"method="POST">
+              <div class="form-group">
+                <input type="text" class="form-control" id="comment_input" name="comment[text]" placeholder="write comment...." required>
+              </div>
+              <%if(currentUser){%>
+                <button type="submit" id="comment_ajax" class="btn btn-warning bt-sm">Submit <img class="commentLogin" src="/img/logo/comment-ajax.gif" class="img-responsive" />
+                </button>
+              <%}else{%>
+                <a style="display: inline; color: white;" id="comm_tshits" class="btn btn-secondary btn-sm">Can't Submit</a>
+                <p style="display: inline; font-style: italic; color: red;" >Please Login to comment.</p>
+              <%}%>
+            </form>
+            <div id="show_comments">
+              <% include ../ajax/comments %>
+            </div>
+          </div> 
+        </div>
+
+      </div>
+</div>
+
+<div id="similar">
+    <%include ../ajax/similar%>
+</div>
+
+<div id="similar">
+    <%include ../ajax/similar%>
+</div>
+
+<% include ../partials/footer %>
+
+

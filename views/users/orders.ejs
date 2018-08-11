@@ -1,0 +1,101 @@
+<% include ../partials/header %>
+
+<div class="container paddingTopBottom">
+	<% if(orders!=0){%>
+		<% orders.reverse().forEach(function(order){ %>
+		  	<div class="card text-center">
+			  <div class="card-header mobile-response" style="background-color: white;">
+			    Purchased At: <%= moment(order.createdOrderAt).format("DD-MMM-YYYY / hh:mm:ss") %>
+			  </div>
+			  <% order.items.reverse().forEach(function(item){ %>
+			  <div class="card-body">
+			    
+			    <div class="container-fluid">
+			    <div class="row">
+	              <div class="col-lg-2 col-5">
+	                <div class="card float-left">
+	                  <img class="card-img-top" src="<%=item.item.image%>" alt="Card image cap">
+	              	</div>
+	              </div>
+	              <div class="col-lg-10 col-7">
+	                <div class="row">
+	                  <div class="col-lg-9 col-md-9 col-9">
+	                    <p class="float-left mobile-response mobile-margin"><%=item.item.name%></p>
+	                  </div>
+	                  <div class="col-lg-3 col-md-3 col-3">
+	                    <p class="text-right mobile-response">QTY: <span class="badge badge-success"><%=item.qty%></span></p>
+	                  </div>
+	                </div>
+	                <div class="row">
+	                	<div class="col-lg-4 col-md-4 col-sm-4 col-4">
+	                		<p class="text-left mobile-response mobile-margin" style="color: green;">₹ <%=item.cost%></p>
+	                	</div>
+	                	<div class="col-lg-7 col-md-7 col-sm-7 col-7">
+	                		<p class="mobile-response"><span style="color: green;"><%=order.response%></span></p>
+	                	</div>
+	                </div>
+	                
+	                
+	                <!--<h5 class="text-left" style="color: green;">PaymenyID : <%=order.paymentId%></h5>-->
+	              </div>
+	            </div>
+	        	</div>
+
+
+			  </div>
+			  <%});%>
+			  <div class="card-footer text-muted" style="background-color: white;">
+			    
+
+			  	<div class="row">
+                <div class="col-lg-3 col-3">
+                  <p class="float-left mobile-response" style="letter-spacing: 1.2px; color: black;">Total: ₹ <%=order.cart.totalCost%></p>
+                </div>
+                <div class="col-lg-3 col-3">
+                  <p class="float-left mobile-response" style="letter-spacing: 1.2px; color: black;">Status: <%=order.status%></p>
+                </div>
+                <div class="col-lg-3 col-3">
+                  <p class="float-left mobile-response" style="letter-spacing: 1.2px; color: black;">Payment Type: <%=order.paymentType%></p>
+                </div>
+                <div class="col-lg-3 col-3">
+                	<%if(order.response === undefined ){%>
+                	<%if(order.status === "Not yet delevered"){%>
+	                	<div class="col-lg-4 col-md-4 col-sm-4 col-4">
+	                		<form action="/dashbord/orders/update_cancle/<%=order._id%>?_method=PUT" method="POST">
+					      		<button class="btn btn-outline-danger btn-sm mobile-response">Cancel Order</button>
+					      	</form>
+	                	</div>
+	               	<%} else {%>
+	                <div class="col-lg-4 col-md-4 col-sm-4 col-4 col-3">
+	                	<%if(order.response === undefined ){%>
+	                	<form action="/dashbord/orders/update_return/<%=order._id%>?_method=PUT" method="POST">
+					      	<button class="btn btn-outline-danger btn-sm mobile-response">Return request</button>
+					    </form>
+					    <%}%>
+	                </div>
+	               	<%}%>
+	               	<%}%>
+                </div>
+              </div>
+
+			  </div>
+			</div>
+			<%});%>  
+	<%} else {%>
+		<div class="container paddingTopBottom">
+			<div class="container paddingTopBottom">
+				<div class="card text-center">
+					
+					<div class="card-body" style="height: 25rem;">
+						<div>
+							<img style="height: 15rem;" src="/img/logo/cart.png">
+						</div>
+						
+						<a href="/" class="btn btn-primary btn-sm mt-4 ml-5">Shop Now <i class="fa fa-angle-double-right" aria-hidden="true"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	<% } %>
+</div>
+<% include ../partials/footer %>

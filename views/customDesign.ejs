@@ -1,0 +1,314 @@
+<% include ./partials/header %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/customDesign.css">
+<script type="text/javascript">
+		$(function () {
+	  $('[data-toggle="tooltip"]').tooltip();
+	});	
+</script>
+<div class="container jumbotron ">
+  <div class="container">
+    <h1 class="display-4">Custom Design </h1>
+    <p class="lead">Dear customer, kindly fill out the form to contact us for designing your T-shirt</p>
+  </div>
+</div>
+
+<div class="container custom">
+	<ul class="nav nav-tabs" id="myTab" role="tablist">
+	  <li class="nav-item">
+	    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Form</a>
+	  </li>
+	  <li class="nav-item">
+	    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">FAQ</a>
+	  </li>
+	</ul>
+	<div class="tab-content" id="myTabContent" style="overflow: visible">
+	  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+	  	<br>
+	  	<h2>Please fill the form for custom designing</h2>
+	  	<br>
+	  	<form action="/customDesign" method="post" style="padding: 1rem">
+		    <div class="form-group row">
+		      <label for="email" class="col-sm-2 col-form-label"><b>Email</b></label>
+		      <div class="col-sm-10">
+		        <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+		      </div>
+		    </div>
+		    <div class="form-group row">
+		      <label for="phone" class="col-sm-2 col-form-label"><b>Phone</b></label>
+		      <div class="col-sm-10">
+		        <input type="Number" class="form-control" id="phone" name="phone" placeholder="Phone No." required="">
+		      </div>
+		    </div>
+		    <div class="form-group row">
+		      <label for="description" class="col-sm-2 col-form-label"><b>Short Description</b></label>
+		      <div class="col-sm-10">
+		    	  <textarea class="form-control" id="description" name="description" rows="5" placeholder="e.g I need to print my logo on front and my name on the back of a white t-shirt" required></textarea>
+		      </div>
+		    </div>
+		    <div class="row">
+		      <legend class="col-form-label col-sm-2 pt-0"><b>T-shirt Color</b></legend>
+		      <div class="col-sm-2">
+		        <div class="form-check">
+		          <input class="form-check-input" type="radio" name="color" id="black" value="black" checked>
+		          <label class="form-check-label" for="black">
+		            Black
+		          </label>
+		        </div>
+		        <div class="form-check">
+		          <input class="form-check-input" type="radio" name="color" id="white" value="white">
+		          <label class="form-check-label" for="white">
+		            White
+		          </label>
+		        </div>
+		        <div class="form-check disabled">
+		          <input class="form-check-input" type="radio" name="color" id="green" value="green" >
+		          <label class="form-check-label" for="green">
+		            Green
+		          </label>
+		        </div>
+		        <div class="form-check">
+		          <input class="form-check-input" type="radio" name="color" id="navyBlue" value="navyBlue">
+		          <label class="form-check-label" for="navyBlue">
+		            Navy Blue
+		          </label>
+		        </div>
+		        <div class="form-check">
+		          <input class="form-check-input" type="radio" name="color" id="brown" value="brown">
+		          <label class="form-check-label" for="brown">
+		            Brown
+		          </label>
+		        </div>
+		        <div class="form-check disabled">
+		          <input class="form-check-input" type="radio" name="color" id="maroon" value="maroon" >
+		          <label class="form-check-label" for="maroon">
+		            Maroon
+		          </label>
+		        </div>
+		      </div>
+		      <div class="col-sm-8">
+				    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#colorModal">
+					  Colour Samples
+					</button>
+
+					<!-- Modal -->
+					<div class="modal fade" id="colorModal" tabindex="-1" role="dialog" aria-labelledby="colorModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel">Available Colours</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					        <div class="row colors">
+					        	<div class="col-lg-4">
+					        		<div class="black">Black</div>
+					        	</div>
+					        	<div class="col-lg-4">
+					        		<div class="white">White</div>
+					        	</div>
+					        	<div class="col-lg-4">
+					        		<div class="green">Green</div>
+					        	</div>
+					        	<div class="col-lg-4">
+					        		<div class="navyBlue">Navy Blue</div>
+					        	</div>
+					        	<div class="col-lg-4">
+					        		<div class="brown">Brown</div>
+					        	</div>
+					        	<div class="col-lg-4">
+					        		<div class="maroon">Maroon</div>
+					        	</div>
+					        </div>
+					      </div>
+					      <div class="modal-footer">
+					        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+		      </div>
+		    </div>
+		    <br>
+			<div class="row">
+		     	<legend class="col-form-label col-sm-2 pt-0"><b>Material</b></legend>
+		     	<div class="col-sm-10">
+		        	<div class="form-check">
+		          		<input class="form-check-input" type="radio" name="material" id="cotton" value="cotton" checked>
+		          		<label class="form-check-label" for="cotton">
+		            		Cotton
+		          		</label>
+		        	</div>
+		    	</div>
+			</div>
+
+			<div class="row">
+		     	<legend class="col-form-label col-sm-2 pt-0"><b>Neck type</b></legend>
+		     	<div class="col-sm-10">
+		        	<div class="form-check">
+		          		<input class="form-check-input" type="radio" name="neck" id="black" value="roundNeck" checked>
+		          		<label class="form-check-label" for="black">
+		            		Round Neck
+		          		</label>
+		        	</div>
+		        	<div class="form-check">
+		          		<input class="form-check-input" type="radio" name="neck" id="black" value="collared" disabled>
+		          		<label class="form-check-label" for="black">
+		            		Collared (polo)
+		          		</label>
+		        	</div>
+		    	</div>
+			</div>
+			<br>
+			<div class="row">
+		     	<legend class="col-form-label col-sm-2 pt-0"><b>Sleeve</b></legend>
+		     	<div class="col-sm-10">
+		        	<div class="form-check">
+		          		<input class="form-check-input" type="radio" name="sleeve" id="half" value="half" checked>
+		          		<label class="form-check-label" for="half">
+		            		Half Sleeve
+		          		</label>
+		        	</div>
+		        	<div class="form-check">
+		          		<input class="form-check-input" type="radio" name="sleeve" id="full" value="full" disabled >
+		          		<label class="form-check-label" for="full" >
+		            		Full Sleeve (Not Available)
+		          		</label>
+		        	</div>
+		    	</div>
+			</div>
+			<br>
+			<div class="row">
+		     	<legend class="col-form-label col-sm-2 pt-0"><b>Design</b></legend>
+		     	<div class="col-sm-10">
+		        	<div class="form-check">
+		          		<input class="form-check-input" type="radio" name="design" id="print" value="print" checked>Print 
+		          		<label class="form-check-label" for="print" data-toggle="tooltip" data-placement="top" title="You provide the design and we'll print">
+		            		<i class="fas fa-question-circle"></i>
+		          		</label>
+		        	</div>
+		        	<div class="form-check">
+		          		<p>(You will submit design later)</p>
+		        	</div>
+		        	<div class="form-check">
+		          		<input class="form-check-input" type="radio" name="design" id="design" value="design"  >Design and Print
+		          		<label class="form-check-label" for="design" data-toggle="tooltip" data-placement="top" title="Let our designers design for you">
+		            		<i class="fas fa-question-circle"></i>
+		          		</label>
+		        	</div>
+		        	
+		    	</div>
+			</div>
+			<div class="form-group row">
+    			<div class="col-sm-10">
+      				<button type="submit" class="btn btn-primary">Submit</button>
+    			</div>
+    			<div class="col-sm-10">
+      				<p>We will contact you in next 24 hours. Keep checking your email.</p>
+    			</div>
+  			</div>
+		</form>
+	</div>	
+
+	<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+<div id="accordion">
+  <!-- <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#question1" aria-expanded="false" aria-controls="question1">
+          <i class="fab fa-quora"></i> When do I submit the design ?
+        </button>
+      </h5>
+    </div> -->
+
+    <!-- <div id="question1" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+      	<h5><span class="btn btn-primary btn-sm">Answer</span></h5>
+        After reviweing your submitted form, Our team will contact you to submit the design.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#question2" aria-expanded="false" aria-controls="question2">
+          <i class="fab fa-quora"></i> Collapsible Group Item #2
+        </button>
+      </h5>
+    </div>
+    <div id="question2" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+      	<h5><span class="btn btn-primary btn-sm">Answer</span></h5>
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#question3" aria-expanded="false" aria-controls="question3">
+          <i class="fab fa-quora"></i> Collapsible Group Item #3
+        </button>
+      </h5>
+    </div>
+    <div id="question3" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+      <div class="card-body">
+      	<h5><span class="btn btn-primary btn-sm">Answer</span></h5>
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#question4" aria-expanded="false" aria-controls="question4">
+          <i class="fab fa-quora"></i> Question
+        </button>
+      </h5>
+    </div>
+    <div id="question4" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+      	<h5><span class="btn btn-primary btn-sm">Answer</span></h5>
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#question5" aria-expanded="false" aria-controls="question5">
+          <i class="fab fa-quora"></i> Collapsible Group Item #2
+        </button>
+      </h5>
+    </div>
+    <div id="question5" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+      	<h5><span class="btn btn-primary btn-sm">Answer</span></h5>
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#question6" aria-expanded="false" aria-controls="question6">
+          <i class="fab fa-quora"></i> Collapsible Group Item #2
+        </button>
+      </h5>
+    </div>
+    <div id="question6" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+      	<h5><span class="btn btn-primary btn-sm">Answer</span></h5>
+        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute
+      </div>
+    </div>
+  </div> -->
+</div>  	
+	</div>	        
+</div>
+</div>
+
+<% include ./partials/footer %>
+
+	

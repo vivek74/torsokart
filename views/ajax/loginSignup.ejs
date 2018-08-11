@@ -1,0 +1,148 @@
+<!-- loginand signup -->
+ <link rel="stylesheet" type="text/css" href="/stylesheets/loginSignup.css">
+
+    <div class="form-login">
+      
+      <ul class="tab-group-login">
+        <li class="tab active"><a href="#signup">Sign Up</a></li>
+        <li class="tab"><a href="#login">Log In</a></li>
+      </ul>
+      
+      <div class="tab-content-login">
+        <div id="signup">   
+        
+          <p style="color: white;">Please fill out this form to register</p>
+
+            <% if(error && error.length > 0) { %>
+              <div class="alert alert-danger ">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <p><%=error %></p>
+              </div>
+            <% } %>
+            <% if(success && success.length > 0) { %>
+              <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <p><%= success %></p>
+              </div>
+            <% } %>
+
+                  
+          <form id="comment_form" action="/register" method="post">
+
+            <div class="form-row">
+              <div class="form-group col-md-6 col-lg-6">
+                <input type="text" name="username" class="form-control form-control-sm" id="inputEmail4" placeholder="Email" required>
+              </div>
+              <div class="form-group col-md-6 col-lg-6">
+                <input type="password" name="password" class="form-control form-control-sm" placeholder="Password" autofocus="autofocus" required>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group col-md-6 col-lg-6">
+                <input type="password" name="confirm" class="form-control form-control-sm" placeholder="Confirm password" required>
+              </div>
+              <div class="form-group col-md-6 col-lg-6">
+                <input type="number" name="phone" class="form-control form-control-sm" placeholder="Phone Number" required>
+              </div>
+            </div>
+
+
+            <div class="form-row">
+              <div class="form-group col-md-6 col-lg-6">
+                <input type="text" name="firstName" class="form-control form-control-sm" placeholder="First Name" required>
+              </div>
+              <div class="form-group col-md-6 col-lg-6">
+                <input type="text" name="lastName" class="form-control form-control-sm" placeholder="Last Name" required>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <div class="g-recaptcha" data-sitekey="6LdqSlUUAAAAAEd48rg-cRT4Hhn2o7x1GZPXudZW">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-6">
+                <input type="submit" value="Submit" class="btn btn-light btn-block">
+              </div>
+              <div class="col-lg-6 col-md-6 col-6">
+                <button type="button" class="btn btn-light btn-block" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+            
+            
+          </form>
+          <div class="hr-sect">OR</div>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-6">
+              <a style="color: white;" class="btn btn-sm btn-social btn-facebook float-right">
+                <span class="fab fa-facebook-f mt-1"></span> Sign in with Facebook
+              </a>
+            </div>
+            <div class="col-lg-6 col-md-6 col-6">
+              <a style="color: white;" class="btn btn-sm btn-social btn-google">
+                <span class="fab fa-google mt-1"></span> Sign in with Google
+              </a>
+
+            </div>
+          </div>
+
+        </div>
+        
+        <div id="login">   
+          
+          <h4 style="color: white">Sign In</h3>
+          <p style="color: white">Please enter details to login</p>
+
+            <% if(error && error.length > 0) { %>
+              <div class="alert alert-danger ">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <p><%=error %></p>
+              </div>
+            <% } %>
+            <% if(success && success.length > 0) { %>
+              <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <p><%= success %></p>
+              </div>
+            <% } %>
+
+          <form id="loginAjax">
+            <div class="form-group">
+              <input type="text" name="username" id="username" class="form-control form-control-sm" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" id="password" class="form-control form-control-sm" placeholder="Password">
+            </div>
+
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-6">
+                
+                <button class="btn btn-light btn-block" id="loginAjaxSubmit">
+                  Submit <span class="lodingLogin"><img src="/img/logo/login-ajax.gif" class="img-responsive" /></span>
+                </button>
+              </div>
+              <div class="col-lg-6 col-md-6 col-6">
+                <button type="button" class="btn btn-light btn-block" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+
+            <a style="margin: 10px;" href="/forgot" id="login-forgot" class="float-left ">Forgot ?</a>
+          </form>
+
+        </div>    
+    </div><!-- tab-content -->
+      
+</div> 
+    
+<script type="text/javascript" src="/javascript/loginSignup.js"></script>

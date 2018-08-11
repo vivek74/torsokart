@@ -1,0 +1,262 @@
+<% include ./partials/header %>
+	<div class="container paddingTopBottom madeContainer">
+		<div class="row">
+			<div class="col-lg-8">
+				<div id="accordion" role="tablist" >
+				  <div class="card" >
+				    <div class="card-header" role="tab" id="headingOne" style="background-color: #94618E;">
+				      <h5 class="mb-0">
+				        <a data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne" style="text-decoration: none;">
+				          <span class="badge badge-light">1</span>&nbsp; &nbsp;<span class="mobile_checkout_view" style="color: white;">LOGIN <i class="fa fa-check" aria-hidden="true"></i></span>
+				        </a>
+				      </h5>
+				    </div>
+
+				    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+				      <div class="card-body">
+				      	<div class="row">
+					      	<div class="col-lg-6 col-md-6 col-6">
+					      		<button type="submit" class="btn btn-warning btn-sm" onclick="window.location.href='class="collapsed" data-toggle="collapse" href="#collapseTwo" role="button" aria-expanded="false" aria-controls="collapseTwo" style="text-decoration: none;'">Proceed <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+					      	</div>
+					      	
+						      	<!-- <div class="col-lg-6 col-md-6 col-6">
+						      		<form action="/checkout/verifyPromo" method="post">
+						      		<div class="row">
+						      			<div class="col-lg-6 col-md-6 col-6">
+						      				<input class="form-control form-control-sm" type="text" name="appliedPromo" placeholder="Promo code">
+						      			</div>
+						      			<div class="col-lg-6 col-md-6 col-6">
+						      				<button type="submit" class="btn btn-secondary btn-sm">Apply</button>
+						      			</div>
+						      		</div>
+						      		<p style="font-style: italic; color: red; font-size: 0.8em;">use promo code get50 on your first order<span><br>for ₹ 50/- off</span></p>
+						      		</form>
+						      	</div> -->
+						 </div>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="card">
+				    <div class="card-header" role="tab" id="headingTwo" style="background-color: #94618E;">
+				      <h5 class="mb-0">
+				        <a class="collapsed" data-toggle="collapse" role="button" aria-expanded="false" style="text-decoration: none;">
+				          <span class="badge badge-light">2</span>&nbsp; &nbsp;<span class="mobile_checkout_view" style="color: white; text-decoration: none;">ADDRESS <i id="p1"><i class="fa fa-check"></i></i><p id="alert1" style="display: inline; font-size: 1.1rem; color: yellow;">Address Saved</p></span>
+				        </a>
+				      </h5>
+				    </div>
+				    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo" data-parent="#accordion">
+				    	<div id="showAdd" class="card-body">
+				    		<% include ./ajax/addAddress %>
+
+				    		<button class="btn btn-warning btn-sm mt-5" id="link2" disabled class="collapsed" data-toggle="collapse" href="#collapseThree" role="button" aria-expanded="false" aria-controls="collapseThree" style="text-decoration: none;">Proceed <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+				    	</div>
+			    	
+				      	<!-- save address model -->
+
+							<!-- Modal -->
+							<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+							  <div class="modal-dialog modal-dialog-centered" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="exampleModalCenterTitle">Add Address</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <form id="addAddres" data-userId="<%=foundUser._id%>" action="/checkout/add/<%=foundUser._id %>" method="POST">
+								      <div class="modal-body">
+								        <div class="form-row">
+								  
+										    <div class="form-group col-md-6 mobile_titles">
+										      <p for="firstname">First Name</p>
+										      <input type="text" class="form-control p-font" id="firstName" required>
+										    </div>
+										    <div class="form-group col-md-6">
+										      <p for="lastname">Last Name</p>
+										      <input type="text" class="form-control p-font" id="lastName" required>
+			    							</div>
+										  	<div class="form-group col-md-6">
+										    	<p for="inputAddress">Hostel No.</p>
+										    	<input type="text" class="form-control p-font" id="Hostal_no" required>
+										  	</div>
+										  	<div class="form-group col-md-6">
+										    	<p for="inputAddress2">Room no.</p>
+										    	<input type="text" class="form-control p-font" id="room_no" required>
+										  	</div>
+										  
+										</div>
+										<div class="form-group">
+											<p for="phoneno">Phone no.</p>
+											<input type="text" class="form-control" id="phoneNo" required>
+										</div>
+								      </div>
+								      <div class="modal-footer">
+								        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+								        <button type="submit" id="addNewAdd" class="btn btn_clr float-right link4">Save changes</button>
+								      </div>
+								   </form>
+							    </div>
+							  </div>
+							</div>
+				      	<!--finished-->
+
+
+
+
+
+
+
+
+				    </div>
+				  </div>
+
+				  <div class="card">
+				    <div class="card-header" role="tab" id="headingThree" style="background-color: #94618E;">
+				      <h5 class="mb-0">
+				        <a class="collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseThree" style="text-decoration: none;">
+				          <span class="badge badge-light">3</span>&nbsp; &nbsp;<span class="mobile_checkout_view" style="color: white; text-decoration: none;">OVERVIEW <i id="p2"><i class="fa fa-check"></i></i></span>
+				        </a>
+				      </h5>
+				    </div>
+				    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree" data-parent="#accordion">
+				      <div class="card-body">
+				        <ul class="list-group list-group-flush">
+				      <% products.forEach(function(products){ %>
+					  <li class="list-group-item">
+					  	<div class="row">
+					  		<div class="col-lg-4 col-md-12" style="overflow: hidden;">
+					  			<div class="card1 float-left">
+							  		<img class="card-img-top mobil_view_cart_img" src="<%= products.item.image %>" alt="Card image cap">
+								</div>
+					  		</div>
+					  		<div class="col-lg-8 col-md-12 mobile_titles">
+					  			<div class="row">
+					  				<div class="col-lg-9">
+					  					<h6 class="float-left mt-2"><%=products.item.name%></h6>
+					  				</div>
+					  				<div class="col-lg-3">
+					  					<p class="text-right mt-2">QTY: <span class="badge badge-success"><%= products.qty%></span></p>
+					  				</div>
+					  			</div>
+					  			<p class="text-left" style="color: green;">₹ <%=products.cost%></p>
+					  		</div>
+					  	</div>
+					  </li>
+					  <%});%>
+					</ul>
+					<button type="submit" id="link3" class="btn btn-warning btn-sm mt-2" onclick="window.location.href='class="collapsed" data-toggle="collapse" href="#collapseFour" role="button" aria-expanded="false" aria-controls="collapseFour" style="text-decoration: none;'">Confirm <i class="fa fa-angle-double-down" aria-hidden="true"></i></button>
+				      </div>
+				    </div>
+				  </div>
+
+
+				  <div class="card">
+				    <div class="card-header" role="tab" id="headingFour" style="background-color: #94618E;">
+				      <h5 class="mb-0">
+				        <a class="collapsed" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFour" style="text-decoration: none;">
+				          <span class="badge badge-light">4</span>&nbsp; &nbsp;<span class="mobile_checkout_view" style="color: white; text-decoration: none;">CHECKOUT</span>
+				        </a>
+				      </h5>
+				    </div>
+				    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour" data-parent="#accordion">
+				      <div class="card-body">
+				        
+
+				        <div class="card border-primary">
+						  <div class="card-header" style="color: white; background-color:#17a2b8;">
+						    Using Cash on Delivery
+						  </div>
+						  <div class="card-body">
+						    <p class="card-title">Cash on Delivery</p>
+						    <p class="card-text">Delivery in 6 to 9 days</p>
+						    <form action="/checkoutcod" method="post">
+						    	<input type="text" hidden name="status" class="form-control" value="Not yet delevered">
+						    	<% if( promoStatus === "Promo code applied") {%>
+				    				<input type="text" name="promoStatus" hidden value="<%=promoStatus%>">
+				    			<%} else {%>
+				    				<input type="text" name="promoStatus" hidden value="<%=promoStatus%>">
+				    			<%}%>
+						    	<button type="submit" class="btn btn-success">Confirm</button>
+						    </form>
+						  </div>
+						</div>
+
+						<div class="card border-primary" hidden>
+						  <div class="card-header" style="color: white; background-color:#94618E;">
+						    Using Debit Cart
+						  </div>
+						  <div class="card-body">
+
+						  	<div id="charge-error" class="alert alert-danger <%if(noError){%> invisible <%}%>">
+								<% errMsg %>
+							</div>
+
+						    <h5 class="card-title mobile_titles">Enter Card Details</h5>
+						    <form action="/checkout" method="post" id="checkout-form">
+						    	<div class="form-group">
+								   <label for="card-name">Card Holder Name</label>
+								   <input type="text" class="form-control" id="card-name" required>
+								</div>
+								<div class="form-row">
+								    <div class="form-group col-md-6">
+								      <label for="inputCity">Debit Card Number</label>
+								      <input type="text" class="form-control" id="card-number" required>
+								    </div>
+								    <div class="form-group col-md-2">
+								      <label for="inputState">Exp Month</label>
+								      <input type="text" class="form-control" id="card-expiry-month" required>
+								    </div>
+
+								    <input type="text" hidden name="status" class="form-control" value="Not yet delevered">
+
+								    <input type="text" hidden name="paymentType" class="form-control" value="Online">
+
+								    <div class="form-group col-md-2">
+								      <label for="inputZip">Exp Year</label>
+								      <input type="text" class="form-control" id="card-expiry-year" required>
+								    </div>
+								    <div class="form-group col-md-2">
+								      <label for="inputZip">CVC</label>
+								      <input type="text" class="form-control" id="card-cvc" required>
+								    </div>
+								</div>
+								<button type="submit" class="btn btn-success">Buy now</button>
+								<div id="loading"></div>
+						    </form>
+						  </div>
+						</div>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+			</div>
+			<div class="col-lg-4 mt-2">
+				<div class="card mb-3">
+				 	<div class="mobile_cart_view">PRICE DETAILS</div>
+				 	<hr style="margin: 0">
+				 	<div class="card-body text-primary">
+						<p class="card-title" style="color: #212121;">Price <span class="float-right">₹ <%=total%> </span></p>
+				    
+				    	<p class="card-title" style="color: #212121;">Delivery Charges<span class="float-right" style="color: green;"> FREE</span></p>
+				    	<hr>
+
+				    	<p class="card-title" style="color: #212121;">Amount Payable <span class="float-right" style="color: green;">₹ <%=total%> </span></p>
+				    		<% if( promoStatus === "Promo code applied") {%>
+				    			<p class="card-title" style="color: #212121;">Discount Amount <span class="float-right" style="color: green;">₹ -50 </span></p>
+				    			<hr>
+				    			<p class="card-title" style="color: #212121;">New Amount <span class="float-right" style="color: green;">₹ <%=total - 50%> </span></p>
+				    		<%} else {%>
+				    			<p class="card-title ml-3" style="font-style: italic; color: red; font-size: 0.8em;"><%=promoStatus%></p>
+				    		<%}%>
+				  	</div>
+				</div>
+				<div id="check">
+					
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript" src="https://js.stripe.com/v2"></script>
+<script type="text/javascript" src="javascript/checkout.js"></script>
+
+<%include ./partials/footer%>

@@ -1,0 +1,11 @@
+<%if(typeof file != 'undefined' ? file : '' ){%>
+  <div class="card border-primary mb-3">
+    <div class="card-header" style="color: white; background-color:#94618E;"><i class="fas fa-images"></i> ITEM IMAGE
+    </div>
+    <div class="card-body text-primary">
+      <img class="card-img-top" src=" <%= typeof file != 'undefined' ? file : '' %> ">
+    </div>
+    <div class="card-header" style="color: white; background-color:#94618E;">Status:  <%= typeof msg != 'undefined' ? msg : '' %>
+    </div>
+  </div>
+<%}%>

@@ -1,0 +1,32 @@
+<% include ../partials/header %>
+<div class="container paddingTopBottom">
+	<div class="card">
+	  <div class="card-body">
+	  	<form action="/anime/<%=category._id%>?_method=PUT" method="POST">
+        <div class="form-group">
+	    <div class="row">
+            <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                    <label for="size1">Size 1</label>
+                    <input type="text" name="size1" text="size1" class="form-control" placeholder="M" required>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                    <label for="size2">Size 2</label>
+                    <input type="text" name="size2" text="size2" class="form-control" placeholder="XL" required>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group col-md-6">
+                    <label for="size3">Size 3</label>
+                    <input type="text" name="size3" text="size3" class="form-control" placeholder="XXL" required>
+                </div>
+            </div>
+        </div>
+    	</div>
+    	</form>
+	  </div>
+	</div>
+</div>
+<% include ../partials/footer %>

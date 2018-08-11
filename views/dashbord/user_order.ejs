@@ -1,0 +1,502 @@
+<% include ../partials/header %>
+
+<% if(currentUser && currentUser.isAdmin){ %>
+<style>
+  .container-fluid {
+    width: 100%;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+  .jumbotron {
+    padding: 1rem 1rem;
+    margin-bottom: 0;
+    background: linear-gradient(45deg,#808080,#3fada8);;
+    border-radius: 0;
+  }
+</style>
+<div class="mobile-user-hide">
+  <div class="container-fluid">
+    <header id="main-header">
+      <div class="row no-gutters">
+        <div class="col-lg-4 col-md-5 col-sm-12">
+          <img src="/img/banners/user.png">
+        </div>
+        <div class="col-lg-8 col-md-7 col-sm-12">
+          <div class="d-flex flex-column" style="background-color: #292b2c; color: white;">
+            <div class="p-5 bg-inverse text-white">
+              <div class="name d-flex flex-row justify-content-between align-items-center">
+                <h1 class="display-4"><%=user.firstName%></h1>
+                <div><i class="fab fa-facebook"></i></i></div>
+                <div><i class="fab fa-instagram"></i></div>
+              </div>
+            </div>
+
+            <div class="p-4" style="background-color: #000;">User Profile</div>
+
+            <div>
+              <div class="d-flex flex-row text-white align-items-stretch text-center">
+                <div class="port-item p-4 bg-primary" style="background-color: #0275d8;" data-toggle="collapse" data-target="#home">
+                  <div class="container">
+                    <i class="fa fa-home"></i>
+                  </div>
+                  Home
+                </div>
+                <div class="port-item p-4 bg-success" data-toggle="collapse" data-target="#resume">
+                  <div class="container">
+                    <i class="fab fa-first-order"></i>
+                  </div>
+                  Orders
+                </div>
+                <div class="port-item p-4 bg-warning user_mobile_view" data-toggle="collapse" data-target="#work">
+                  <div class="container">
+                    <i class="fab fa-shirtsinbulk"></i>
+                  </div> 
+                  T-shirts
+                </div>
+                <div class="port-item p-4 bg-danger" data-toggle="collapse" data-target="#contact">
+                  <div class="container">
+                  <i class="fas fa-envelope"></i>
+                  </div>
+                  Contact
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- HOME -->
+    <div id="home" class="collapse show">
+      <div class="card card-block border-primary card-primary bg-primary text-white py-5">
+        <div class="container">
+          <h2>Home Page</h2>
+          <p class="lead">Here you are going to find your address and if you want you can edit it also.</p> 
+        </div>
+      </div>
+
+      <div class="card card-block py-5">
+        <div class="container">
+          <h3>Address</h3>
+          <hr>
+          <div class="row">
+            <div class="col-lg-6 col-md-6">
+              <p style="font-size: 1.5rem; color: #878787;"><span style="color: black;">Firstname - </span><%=user.add_firstName%></p>
+              <p style="font-size: 1.5rem; color: #878787;"><span style="color: black;">Lastname - </span><%=user.add_lastName%></p>
+          <p style="font-size: 1.5rem; color: #878787;"><span style="color: black;">Hostel - </span><%=user.add_hostalNo%></p>
+          <p style="font-size: 1.5rem; color: #878787;"><span style="color: black;">Room no - </span><%=user.add_roomNo%></p> 
+            </div>
+            <div class="col-lg-6 col-md-6">
+              <div class="card-body">
+                <form id="change_add" data-userId="<%=user._id%>" action="/checkout/update/<%=user._id %>?_method=PUT" method="POST" >
+              <div class="form-row">
+                
+                  <div class="form-group col-md-6">
+                    <label for="firstname">First Name</label>
+                    <input type="text" class="form-control" id="firstName" value="<%=user.add_firstName%>">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" value="<%=user.add_lastName%>">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputAddress">Hostel No.</label>
+                    <input type="text" class="form-control" id="Hostal_no" value="<%=user.add_hostalNo%>">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="inputAddress2">Room no.</label>
+                    <input type="text" class="form-control" id="room_no" value="<%=user.add_roomNo%>">
+                  </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-lg-7">
+                  <button type="submit" id="link" value="submit" class="btn btn-primary float-right link4" onclick="enableButton2()"> SAVE</button>
+                </div>
+              </div>
+              
+            </form>
+
+            
+              </div>
+            </div>
+          </div>
+          
+      </div>
+      </div>
+    </div>
+
+    <!-- RESUME -->
+    <div id="resume" class="collapse">
+      <div class="card card-block border-success card-success text-white py-5" style="background-color: #28a745;">
+        <div class="container">
+          <h2>My Orders</h2>
+      </div>
+      </div>
+      <div class="card card-block py-5">
+        <div class="container-fluid">
+
+    <% if(orders){%>
+    <div class="card mt-1">
+      <div class="card-header" style="background-color: #28a745; color: white;">
+        Previous Order
+      </div>
+      <div class="card-body">
+        <ul class="list-group">
+          <% orders.reverse().forEach(function(order){ %>
+              
+          <li class="list-group-item">
+            <h6 class="card-header" style="background-color: white ; color: black;">Purchased At: <%= moment(order.createdOrderAt).format("DD-MMM-YYYY hh:mm:ss") %></h6>
+            <% order.items.reverse().forEach(function(item){ %>
+            <div class="row">
+              <div class="col-lg-2">
+                <div class="card float-left">
+                  <img class="card-img-top" src="<%=item.item.image%>" alt="Card image cap">
+              </div>
+              </div>
+              <div class="col-lg-10">
+                <div class="row">
+                  <div class="col-lg-9">
+                    <h7 class="float-left mt-2"><%=item.item.name%></h7>
+                  </div>
+                  <div class="col-lg-3">
+                    <h7 class="text-right mt-2">QTY: <span class="badge badge-success"><%=item.qty%></span></h7>
+                  </div>
+                </div>
+                <h7 class="text-left" style="color: green;">₹ <%=item.cost%></h7>
+              </div>
+            </div>
+            <%});%>
+            <hr>
+            <div class="card-header" style="background-color: white; color: black;">
+              <div class="row">
+                <div class="col-lg-4">
+                  <h7 class="float-left" style="letter-spacing: 1.2px;">Total: ₹ <%=order.cart.totalCost%></h7>
+                </div>
+                <div class="col-lg-4">
+                  <h7 class="float-left" style="letter-spacing: 1.2px;">Status: <%=order.status%></h7>
+                </div>
+                <div class="col-lg-4">
+                  <h7 class="float-left" style="letter-spacing: 1.2px;">Payment Type: <%=order.paymentType%></h7>
+                </div>
+              </div>
+            </div>
+          </li>
+        <%});%> 
+      </ul>
+      </div>
+    </div>
+
+    <%} else {%>
+    
+    <div class="card">
+      <h5 class="card-header">Empty</h5>
+      <div class="card-body">
+        <h5 class="card-title">NO ORDERS</h5>
+      </div>
+    </div>
+
+    <% } %> 
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <!-- WORK -->
+    <div id="work" class="collapse">
+      <div class="card card-block border-warning card-warning text-white py-5" style="background-color: #ffc107;">
+        <div class="container">
+          <h2>My T-Shirts</h2>
+      </div>
+      </div>
+      <div class="card card-block py-5">
+        <div class="container">
+        <h3>T-shirts I Have Bought</h3>
+        <div class="row no-gutters">
+        <% orders.reverse().forEach(function(order){ %>
+        <% order.items.reverse().forEach(function(item){ %> 
+          <div class="col-md-3">
+              <img src="<%=item.item.image%>" alt="" class="img-fluid">
+          </div>
+        <%});%>
+        <%});%>
+        </div>
+      </div>
+  </div>
+    </div>
+
+    <!-- CONTACT -->
+    <div id="contact" class="collapse">
+      <div class="card card-block border-danger card-danger text-white py-5" style="background-color: #dc3545;">
+        <div class="container">
+        <h2>Contact</h2>
+    </div>
+      </div>
+      <div class="card card-block py-5">
+        <div class="container">
+        <h3>Get In Touch</h3>
+        <p>We will happy to hear from you.</p>
+
+
+
+        
+        <form action="/contact" method="POST">
+          <div class="form-group">
+            <div class="input-group input-group-lg">
+              <span class="input-group-append bg-danger text-black" style="width: 3rem;">
+                <div class="container">
+                  <i style="color: white;" class="fa fa-user"></i>  
+                </div>
+                
+              </span>
+              <input type="text" name="name" class="form-control bg-inverse text-black" placeholder="Name">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group input-group-lg">
+              <span class="input-group-append bg-danger text-black" style="width: 3rem;">
+                <div class="container">
+                  <i style="color: white;" class="fa fa-envelope"></i>  
+                </div>
+                
+              </span>
+              <input type="email" name="email" class="form-control bg-inverse text-black" placeholder="Email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="input-group input-group-lg">
+              <span class="input-group-append bg-danger text-black" style="width: 3rem;">
+                <div class="container">
+                  <i style="color: white;" class="fas fa-pencil-alt"></i> 
+                </div>
+                
+              </span>
+              <textarea rows="5" name="body" class="form-control bg-inverse text-black" placeholder="Eg:- I need custom T-Shirt of my own design. Contact me as early as possible."></textarea>
+            </div>
+          </div>
+          <input type="submit" class="btn btn-danger btn-block btn-lg" value="Submit">
+        </form>
+      </div>
+  </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.2.0/ekko-lightbox.js"></script>
+  <script>
+    $('.port-item').click(function(){
+      $('.collapse').collapse('hide');
+    });
+
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+        event.preventDefault();
+        $(this).ekkoLightbox();
+    });
+  </script>
+</div>
+
+<!--Mobile view -->
+
+<div class="container-fluid mobile-hide-to-desktop">
+
+  <div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <div class="text-center">
+        <img style="height: 8rem; border-radius: 100px;" src="/img/banners/user.png" class="rounded">
+        <p class="mt-2" style="color: white; font-size: 1.5em;"><%=user.firstName%></p>
+      </div>
+    </div>
+  </div>
+  
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h5 class="mb-0">
+          <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            PROFILE <i class="fas fa-angle-double-right"></i>
+          </button>
+        </h5>
+      </div>
+
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <img src="/img/banners/user.png">
+            </div>
+            <div class="col-8">
+              <div class="container">
+                <p>Name: <%=user.firstName%> <%=user.lastName%></p>
+                <p>Email: <%=user.email%>
+                <p>Phone: <%=user.phone%></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            ORDERS <i class="fas fa-angle-double-right"></i>
+          </button>
+        </h5>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+        <div class="card-body">
+          <% if(orders){%>
+                <% orders.reverse().forEach(function(order){ %>
+                
+                <div class="card-header mobile-response" style="background-color: white;">
+                  Purchased At: <%= moment(order.createdOrderAt).format("DD-MMM-YYYY / hh:mm:ss") %>
+                </div>
+                <% order.items.reverse().forEach(function(item){ %>
+                <div class="card-body">
+                  
+                  <div class="container">
+                  <div class="row">
+                        <div class="col-lg-2 col-5">
+                          <div class="card float-left">
+                            <img class="card-img-top" src="<%=item.item.image%>" alt="Card image cap">
+                        </div>
+                        </div>
+                        <div class="col-lg-10 col-7">
+                          <div class="row">
+                            <div class="col-lg-9 col-md-9 col-9">
+                              <p class="float-left mobile-response mobile-margin"><%=item.item.name%></p>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-3">
+                              <p class="text-right mobile-response">QTY: <span class="badge badge-success"><%=item.qty%></span></p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                              <p class="text-left mobile-response mobile-margin" style="color: green;">₹ <%=item.cost%></p>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                              <p class="text-left mobile-response"><span style="color: green;"><%=order.response%></span></p>
+                            </div>
+                          </div>
+                          
+                          
+                          <!--<h5 class="text-left" style="color: green;">PaymenyID : <%=order.paymentId%></h5>-->
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <%});%>
+                <div class="card-footer text-muted" style="background-color: white;">
+                  
+
+                  <div class="row">
+                        <div class="col-lg-3 col-3">
+                          <p class="float-left mobile-response" style="letter-spacing: 1.2px; color: black;">Total: ₹ <%=order.cart.totalCost%></p>
+                        </div>
+                        <div class="col-lg-3 col-3">
+                          <p class="float-left mobile-response" style="letter-spacing: 1.2px; color: black;">Status: <%=order.status%></p>
+                        </div>
+                        <div class="col-lg-3 col-3">
+                          <p class="float-left mobile-response" style="letter-spacing: 1.2px; color: black;">Payment Type: <%=order.paymentType%></p>
+                        </div>
+                        <div class="col-lg-3 col-3">
+                          <%if(order.response === undefined ){%>
+                          <%if(order.status === "Not yet delevered"){%>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-4">
+                              <form action="/dashbord/orders/update_cancle/<%=order._id%>?_method=PUT" method="POST">
+                            <button class="btn btn-outline-danger btn-sm mobile-response">Cancel Order</button>
+                          </form>
+                            </div>
+                          <%} else {%>
+                          <div class="col-lg-4 col-md-4 col-sm-4 col-3">
+                            <%if(order.response === undefined ){%>
+                            <form action="/dashbord/orders/update_return/<%=order._id%>?_method=PUT" method="POST">
+                          <button class="btn btn-outline-danger btn-sm mobile-response">Return request</button>
+                      </form>
+                      <%}%>
+                          </div>
+                          <%}%>
+                          <%}%>
+                        </div>
+                      </div>
+
+                </div>
+              
+              <%});%>  
+          <%} else {%>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h5 class="mb-0">
+          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            CONTACT US <i class="fas fa-angle-double-right"></i>
+          </button>
+        </h5>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+        <div class="card-body">
+          
+          <form action="/contact" method="POST">
+            <div class="form-group">
+              <div class="input-group input-group-lg">
+              <span class="input-group-append bg-danger text-black" style="width: 3rem;">
+                <div class="container">
+                  <i style="color: white;" class="fa fa-user"></i>  
+                </div>
+              </span>
+              <input type="text" name="name" class="form-control bg-inverse text-black" placeholder="Name">
+            </div>
+            </div>
+            <div class="input-group input-group-lg">
+              <span class="input-group-append bg-danger text-black" style="width: 3rem;">
+                <div class="container">
+                  <i style="color: white;" class="fa fa-envelope"></i>  
+                </div>
+                
+              </span>
+              <input type="email" name="email" class="form-control bg-inverse text-black" placeholder="Email">
+            </div>
+            <div class="form-group mt-3">
+            <div class="input-group input-group-lg">
+              <span class="input-group-append bg-danger text-black" style="width: 3rem;">
+                <div class="container">
+                  <i style="color: white;" class="fas fa-pencil-alt"></i> 
+                </div>
+                
+              </span>
+              <textarea rows="5" name="body" class="form-control bg-inverse text-black" placeholder="Eg:- I need custom T-Shirt of my own design. Contact me as early as possible."></textarea>
+            </div>
+          </div>
+          <input type="submit" class="btn btn-danger btn-block btn-lg" value="Submit">
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+<%} else{%>
+	<div class="container paddingTopBottom">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card border-primary mb-3">
+				  <div class="card-header" style="background-color: #2969b0; color: white;">ERROR</div>
+				  <div class="card-body text-primary">
+				    <h5 class="card-title">ADMIN AREA</h5>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+<%}%>
+<% include ../partials/footer%>
+

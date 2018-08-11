@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+<div class="container-fluid top" style="margin-top: 5em;">
+    <div class="row">
+        <div class="col-md-2 col-xs-1 p-l-0 p-r-0  in show  " id="sidebar2">
+            <div class="list-group panel shadow" style="font-size: 13px;">
+                <a class="list-group-item collapsed edit"  data-parent="#sidebar2">AVAILABLE CATEGORIES</a>
+
+                <a onclick='frontPageAll(1,"allproducts")' class="list-group-item collapsed cursor edit"  data-parent="#sidebar2"> All tshirts</a>
+
+                <a onclick='frontPageAll(1,"quotes")' class="list-group-item collapsed cursor edit"  data-parent="#sidebar2"> Text tshirts</a>
+
+                <a onclick='frontPageAll(1,"pattern")' class="list-group-item collapsed cursor edit"  data-parent="#sidebar2"> <span class="hidden-sm-down">Pattern tshirts</span> </a>
+                
+                <a onclick='frontPageAll(1,"states")' class="list-group-item collapsed cursor edit" data-parent="#sidebar2"> <span class="hidden-sm-down">State tshirts</span></a>
+
+                <a onclick='frontPageAll(1,"southindian")' class="list-group-item collapsed cursor edit"  data-parent="#sidebar2"> <span class="hidden-sm-down">South Indian tshirts</span> </a>
+                
+                <a onclick='frontPageAll(1,"sports")' class="list-group-item collapsed cursor edit" data-parent="#sidebar2"> <span class="hidden-sm-down">Sports tshirts</span></a>
+            </div>
+        </div>
+
+
+        <div class="col-md-10 col-xs-11 p-l-2 p-t-2 mainscroll"  id='content'>
+          <% include ../ajax/frontPage %>
+        </div>
+
+    </div>
+</div>
+
+<% include ../partials/footer %>

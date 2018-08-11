@@ -1,0 +1,117 @@
+<% include ./partials/header %>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+    <header id="home-section">
+    <div class="dark-overlay" >
+      <div class="home-inner">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 d-none d-md-block">
+              <h4 style="color: white;">Wear Awesome And Cool T-Shirts. Get your T-shirts instantly with our free Home delivery service.</h4>
+                <div class="d-flex flex-row">
+                  <div class="p-4 align-self-start">
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="p-4 align-self-end">
+                    Wide range of designs from numerous categories.
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row">
+                  <div class="p-4 align-self-start">
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="p-4 align-self-end">
+                    Best Trending designs available at affordable prices.
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row">
+                  <div class="p-4 align-self-start">
+                    <i class="fa fa-check"></i>
+                  </div>
+                  <div class="p-4 align-self-end">
+                    Variants of T-Shirt designs avaliable in multiple colors.
+                    "Always wear awesome because clothes reflect who you are".
+                  </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card card-primary card-form text-center">
+                <div class="card-block" id="login-card">
+                  <h3>Sign Up Today</h3>
+                  <p>Please fill out this form to register</p>
+
+                  <div class="container paddingTop">
+                    <% if(error && error.length > 0) { %>
+                      <div class="alert alert-danger ">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <p><%=error %></p>
+                      </div>
+                    <% } %>
+                    <% if(success && success.length > 0) { %>
+                      <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                        <p><%= success %></p></div>
+                    <% } %>
+                  </div>
+                  
+                  <form id="comment_form" action="/register" method="post">
+                    <div class="form-group">
+                      <input type="text" name="username" class="form-control form-control-lg" id="inputEmail4" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" name="password" class="form-control form-control-lg" placeholder="Password" autofocus="autofocus" required>
+                    </div>
+                    <div class="form-group">
+                      <input type="password" name="confirm" class="form-control form-control-lg" placeholder="Confirm password" required>
+                    </div>
+                    <div class="form-row">
+                      <div class="form-group col-md-6 col-lg-6">
+                        <input type="text" name="firstName" class="form-control form-control-lg" placeholder="First Name" required>
+                      </div>
+                      <div class="form-group col-md-6 col-lg-6">
+                        <input type="text" name="lastName" class="form-control form-control-lg" placeholder="Last Name" required>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <input type="number" name="phone" class="form-control form-control-lg" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                      <div class="g-recaptcha" data-sitekey="6LdqSlUUAAAAAEd48rg-cRT4Hhn2o7x1GZPXudZW"></div>
+                    </div>
+                    <input type="submit" value="Submit" class="btn btn-light btn-block">
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+     $(document).ready(function() {
+        $('#comment_form').submit(function() {
+          $(this).ajaxSubmit({
+            error: function(xhr) {
+              status('Error: ' + xhr.status);
+            },
+           success: function(response) {
+            console.log(response);
+           }
+          });
+          //Very important line, it disable the page refresh.
+          return false;
+        });
+      });
+    </script>
+
+  </header>
+  <% include ./partials/footer %>
+
+
