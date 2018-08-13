@@ -158,6 +158,11 @@
     <div id="content_style">
         <nav class="navbar navbar-light  navbar-expand-md fixed-top">
           <div class="container">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-info nav-item mr-4"> <i class="glyphicon glyphicon-align-left"></i>
+            <span><i class="fas fa-bars"></i></span>
+            </button>
+
             <a class="navbar-brand" id="navbar-brand" href="/"><img style="width: 2rem;" src="/img/logo/logo2.png"> <img style="width: 5rem; padding-bottom: 4px;" src="/img/logo/logo.png"> </a>
       
             <a class="nav-link menu cart_mobile_view" href="/cart">
@@ -166,10 +171,13 @@
                 <span class="badge badge-danger" ><%= session.cart.totalQty %></span>
               <% } %>
             </a>
-            <button type="button" id="sidebarCollapse" class="btn btn-info nav-item"> <i class="glyphicon glyphicon-align-left"></i>
-            <span><i class="fas fa-bars"></i></span>
-            </button>
 
+            
+
+            <!-- <button type="button" id="sidebarCollapse" class="btn btn-info nav-item"> <i class="glyphicon glyphicon-align-left"></i>
+            <span><i class="fas fa-bars"></i></span>
+            </button> -->
+            
             <div style="margin-left: 5em;" class="collapse navbar-collapse  " id="navbarNav">
               <ul class="navbar-nav ">
                 
@@ -208,6 +216,7 @@
                   </div>
                   
                 </li>
+
                 <li style="margin-left: 1em;" class="nav-item madedropdown1">
                   <a class="nav-link madedropbtn1" href="#">WOMEN <i class="fas fa-angle-down"></i></a>
         
@@ -269,6 +278,7 @@
           <div id="user-status-header">
             <% include ../ajax/userStatus %>
           </div>
+
 
           <!-- end up here -->
           <!-- loading -->

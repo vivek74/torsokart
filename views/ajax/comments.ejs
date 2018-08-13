@@ -1,19 +1,20 @@
-<div class="card newCard">
+<div class="card newCard mainscroll">
   <div class="card-body">
     <div class="row">
       <% if (category.comments.length === 0) { %>
-          <em style="color: grey;">Be the first one to comment!</em>
+        <em style="color: grey;">Be the first one to comment!</em>       
       <% } %>
       <% category.comments.reverse().forEach(function(comment){ %>
-      <div class="col-md-12 col-xs-12 mb-2">
-        <strong style="color: #2969b0;"><i class="fas fa-comments"></i><span class="show_comments_topic"> <%= comment.author.username %></span></strong>
-        <span style="color: #2969b0;" class="pull-right"><%= moment(comment.createdAt).fromNow() %></span>
-        <div class="show_comments_disp">
-          &nbsp <%= comment.text %> 
+      <div class="card card-2 p-3 col-md-12 col-xs-12 mb-2 ">
+        <strong style="color: #2969b0;"><img style="width: 1.2rem;" src="/img/logo/logo2.png"><span class="show_comments_topic"> <%= comment.author.username %></span></strong>
+        <div class="show_comments_disp pl-4 pt-2">
+          <%= comment.text %> 
           <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
           <div class="pull-right">
               <form class="delete-form" action="/category/<%= category.category%>/<%= category._id %>/comments/<%= comment._id%>?_method=DELETE" method="POST">
-                <button class="btn btn-secondary btn-sm">DELETE</button>
+                <button style="background-color: transparent; border: 0; padding: 0; margin: 0; font-weight: bold;" class="add-con-font card-text p-button checkout_address">
+                  DELETE 
+                </button>
               </form>
           </div>
           <% } %>

@@ -1,15 +1,15 @@
-<div class="container" style="background-color: white;">
+<div class="container card card-2 mb-4" style="background-color: white;">
 	<div class="card">
 	  <div class="card-body">
 	  	<h5 class="card-title">Similar products</h5>
 		    <div class="row">
 			<% similer.forEach(function(items){%>
-				<div class="col-lg-3 col-md-3 col-3 mt-4 animated slideInUp d-flex">
+				<div class="col-lg-3 col-md-3 col-6 animated slideInUp d-flex p-2">
 
 					<div class="card flex-fil card-1" style="width: 14rem;">
 						<a target="_blank" href="/category/<%= items.category %>/<%= items._id %>"><img class="card-img-top " src="<%=items.image %>" alt="Card image cap"></a>
 						<div class="card-body" id="card-edit">
-			                <p class="index-font"><%= items.name %></p>
+			                <p><%= items.name %></p>
 			                <p class="card-text float-left" id="c1" style="color: black;">
 			                  <strike id="c2" class="dis_mob">
 			                    ₹<%= items.orignal_price %>

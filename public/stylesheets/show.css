@@ -355,7 +355,7 @@ background-color: #2969b0;}
 }
 .mainscroll{
   overflow-y: auto;
-  max-height: 900px;
+  max-height: 400px;
 }
 /*mobile view landing page*/
 .padding-new-page{
