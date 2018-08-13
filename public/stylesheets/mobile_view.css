@@ -143,6 +143,8 @@
   	.p-font{font-size: 12px;}
   	.p-button{ font-size: 12px; }
   	.address-system{ display: none; }
+  	.mobile-hide{ display: none }
+  	#padding-new-page{ display: none; }
 }
 
 @media screen and (min-width: 800px) and (max-width: 3500px) {
@@ -151,6 +153,7 @@
 	.mobile-hide-to-desktop{ display: none; }
 	.add-font{font-size: 6rem;}
 	.add-con-font{margin-left: 1.2em; margin-top: 1.2em;}
+	.web-view {display: none;}
 
 
 }

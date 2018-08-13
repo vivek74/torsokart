@@ -35,55 +35,61 @@
 	  </a>
 	</div>
 
-	<div style="width: 60rem;" class="card landing-add mt-4">
+	<div style="width: 60rem;" class="card card-2 landing-add mt-4 mobile-hide">
+		<img style="height: 10rem;" src="/img/banners/landing_add.jpg">
+	</div>
+	<div class="card card-2 mt-4 web-view">
 		<img style="height: 10rem;" src="/img/banners/landing_add.jpg">
 	</div>
 
-	<div style="width: 100%; background-color: #49274a; color: white;" class="card landing-add mt-4">
-		<h5 class="ml-4 mt-2 mb-2" style="text-align: center;">Customize your own design</h5>
-	</div>
-
-	<div style="width: 60rem;" class="landing-add mt-5">
-		<div class="row">
-			<div class="col-lg-6 col-md-6 col-6 ">
-				<img class="card-1" style="height: 19rem; cursor: pointer;" src="/img/banners/customDesign.jpg">
-			</div>
-			<div class="col-lg-6 col-md-6 col-6">
-				<img class="card-1" style="height: 19rem; cursor: pointer;" src="/img/banners/customDesign.jpg">
+	<div class="container web-view mt-3 card-2" style="background-color: rgba(73,155,234,1) ">
+		<div class="card-body">
+			<h5 style="padding-bottom: 0; margin: 0; color: black;">DESIGN YOUR OWN T-SHIRT</h5>
+		</div>
+		<div class="web-view pb-5">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-6 p-1" >
+					<img class="card-1" style="height: 10rem; cursor: pointer;" src="/img/banners/customDesign.jpg">
+				</div>
+				<div class="col-lg-6 col-md-6 col-6 p-1">
+					<img class="card-1" style="height: 10rem; cursor: pointer;" src="/img/banners/customDesign.jpg">
+				</div>
 			</div>
 		</div>
 	</div>
 
-	<div style="width: 100%; background-color: #49274a; color: white;" class="card landing-add mt-5">
-		<h5 class="ml-4 mt-2 mb-2" style="text-align: center;">ALL T-SHIRTS</h5>
+	
+	<div class="container mobile-hide mt-3 card-2" style="background-color: rgba(73,155,234,1)">
+		<div class="card-body" style="padding-bottom: 0; margin: 0;">
+			<h4 style="padding-bottom: 0; margin: 0; color: white;">DESIGN YOUR OWN T-SHIRT</h4>
+		</div>
+		<div style="width: 60rem;" class="landing-add mt-5 mobile-hide pb-5">
+			<div class="row">
+				<div class="col-lg-6 col-md-6 col-6 p-2">
+					<img class="card-1" style="height: 19rem; cursor: pointer; border-radius: 5px;" src="/img/banners/customDesign.jpg">
+				</div>
+				<div class="col-lg-6 col-md-6 col-6 p-2">
+					<img class="card-1" style="height: 19rem; cursor: pointer; border-radius: 5px;" src="/img/banners/customDesign.jpg">
+				</div>
+			</div>
+		</div>
 	</div>
 
+
 	<!-- types of category -->
-	<div id="showAllshirts">
+	<div id="showAllshirts" class="mt-4">
 		<%include ./ajax/allShirts%>
 	</div>
 	
-	<div style="width: 100%; background-color: #49274a; color: white;" class="card landing-add mt-5">
-		<h5 class="ml-4 mt-2 mb-2" style="text-align: center;">TRENDING</h5>
-	</div>
-
-	<div id="showtrending">
+	<div id="showtrending" class="mt-4">
 		<%include ./ajax/trending%>
 	</div>
 
-	<div style="width: 100%; background-color: #49274a; color: white;" class="card landing-add mt-5">
-		<h5 class="ml-4 mt-2 mb-2" style="text-align: center;">TEXT</h5>
-	</div>
-
-	<div id="showtext">
+	<div id="showtext" class="mt-4">
 		<%include ./ajax/text%>
 	</div>
 
-	<div style="width: 100%; background-color: #49274a; color: white;" class="card landing-add mt-5">
-		<h5 class="ml-4 mt-2 mb-2" style="text-align: center;">BEST DEALS</h5>
-	</div>
-
-	<div id="showbestdeals">
+	<div id="showbestdeals" class="mt-4">
 		<%include ./ajax/bestDeals%>
 	</div>
 

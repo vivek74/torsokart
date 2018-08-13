@@ -28,9 +28,11 @@ router.get("/", function(req, res){
       showMore(total);
       function showMore(total = 4){
         Category1.aggregate([{'$sample':{"size": total}}], function(err,showItems){
-          Category1.aggregate([{'$match':{"category":"quotes"}}, {'$sample':{"size": total}}],function(err,showtextitem){
+          Category1.aggregate([{'$match':{"category":"newArrival"}}, {'$sample':{"size": total}}],function(err,showtextitem){
             Category1.aggregate([{ $sort : { cost : 1 } }, { $limit : total }],function(err,showbestdeals){
-              res.render("new-landing", {showItems: showItems, current: pageNumber, allitems:allitems, showtextitem:showtextitem, showbestdeals:showbestdeals});
+              Category1.aggregate([{'$match':{"category":"trending"}}, {'$sample':{"size": total}}],function(err,showTrending){
+                res.render("new-landing", {showItems: showItems, current: pageNumber, allitems:allitems, showtextitem:showtextitem, showbestdeals:showbestdeals, showTrending:showTrending});
+              });
             });
           });
         });
@@ -80,8 +82,8 @@ router.get("/trending/:page", function(req, res){
       showMore(total);
       //function 1
       function showMore(){
-        Category1.aggregate([{'$match':{"createdAt":{$gt:new Date(Date.now() - 24*60*60 * 1000)}}},{'$sample':{"size": total}}], function(err,showItems){
-          res.render("ajax/trending", {showItems: showItems, current: pageNumber, allitems: allitems});
+        Category1.aggregate([{'$match':{"category":"trending"}},{'$sample':{"size": total}}], function(err,showTrending){
+          res.render("ajax/trending", {showTrending: showTrending, current: pageNumber, allitems: allitems});
         });
       }
     }
@@ -102,7 +104,7 @@ router.get("/text/:page", function(req, res){
       showMore(total);
       //function 1
       function showMore(){
-        Category1.aggregate([{'$match':{"category":"quotes"}}, {'$sample':{"size": total}}],function(err,showtextitem){
+        Category1.aggregate([{'$match':{"category":"newArrival"}}, {'$sample':{"size": total}}],function(err,showtextitem){
           res.render("ajax/text", {showtextitem: showtextitem, current: pageNumber, allitems: allitems});
         });
       }
