@@ -13,15 +13,18 @@
                   <div class="wrapper row">
                     <div class="preview col-md-6" style="padding: 0px;">
                       <div class="preview-pic tab-content">
-                        <div class="tab-pane active" id="pic-1"><img src="<%=category.image%>" /></div>
+                        <div class="tab-pane active" id="pic-1"><img class="spc-img" src="<%=category.image%>" />
+                        </div>
                         <% if(currentUser && category.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
                           <button type="button" class="btn btn-success btn-sm" onclick="window.location.href='/category/<%=category.category%>/<%= category._id %>/edit'">Edit</button>
                           <form action="/category/<%=category.category%>/<%= category._id %>?_method=DELETE" method="POST" class="delete-form">
                             <button class="btn btn-danger btn-sm">Delete</button>
                           </form>
                         <%}%>
+
                       </div>
                     </div>
+
                     <div class="details col-md-6 mobile_view_table" style="padding-right: 0px;">
                       <h5 class="product-title" style="font-family: 'Raleway', sans-serif; color: black;"><%=category.name%></h5>
                       <div class="rating"></div>
@@ -32,7 +35,7 @@
                           <td>
                             <p>
                               <ul class="table_show_view">
-                                <p style="margin-left: 1em; margin-bottom: 0; color: red;"><strike style="color: #696e79;">₹<%=category.orignal_price%>/- </strike>&nbsp &nbsp &nbsp(<%= Math.floor(100-((category.cost * 100)/category.orignal_price)) %>% OFF) </p>
+                                <!-- <p style="margin-left: 1em; margin-bottom: 0; color: red;"><strike style="color: #696e79;">₹<%=category.orignal_price%>/- </strike>&nbsp &nbsp &nbsp(<%= Math.floor(100-((category.cost * 100)/category.orignal_price)) %>% OFF) </p> -->
                                 <p style="margin-left: 1em; margin-bottom: 0; font-weight: bold; color: black;">₹<%=category.cost%>/-</p>
                               </ul>
                             </p>

@@ -49,8 +49,12 @@
 
 
 /*end*/
+.spc-img{
+  max-width: 75%;
+}
 img {
-  max-width: 100%; }
+  max-width: 100%; 
+}
 
 .preview {
   display: -webkit-box;
@@ -71,10 +75,9 @@ img {
 .preview-pic {
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;  
-    //border: 1px solid #868e96;
-    margin: 2em;}
+  -ms-flex-positive: 1;
+  flex-grow: 1;  
+  margin: 2em;}
 
 .preview-thumbnail.nav-tabs {
   border: none;

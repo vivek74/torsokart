@@ -123,34 +123,31 @@
           </li>                               
         </ul>
         <ul class="list-unstyled components">
+          <p><span class="mobile_account" style="text-decoration: underline;">Products</span></p>
+          <li>
+            <a href="/category/allproducts"><span class="mobile_titles"> ALL T-SHIRTS</span></a>
+          </li>                   
+          <li>
+            <a href="/category/quotes"><span class="mobile_titles"> TEXT T-SHIRTS</span></a>
+          </li>
 
-                    <p><span class="mobile_account" style="text-decoration: underline;">Products</span></p>
-                    <li>
-                        <a href="/category/allproducts"><span class="mobile_titles"> ALL T-SHIRTS</span></a>
-                    </li>                   
-                    <li>
-                        <a href="/category/quotes"><span class="mobile_titles"> TEXT T-SHIRTS</span></a>
-                    </li>
+          <li>
+            <a href="/category/pattern"><span class="mobile_titles"> PATTERN / ABSTRACT T-SHIRTS</span></a>
+          </li>
+          <li>
+            <a href="/category/states"><span class="mobile_titles"> STATES T-SHIRTS</span></a>
+          </li>
+          <li>
+            <a href="/category/southindian"><span class="mobile_titles"> SOUTH INDIAN T-SHIRTS</span></a>
+          </li>
 
-                    <li>
-                        <a href="/category/pattern"><span class="mobile_titles"> PATTERN / ABSTRACT T-SHIRTS</span></a>
-                    </li>
-                    <li>
-                        <a href="/category/states"><span class="mobile_titles"> STATES T-SHIRTS</span></a>
-                    </li>
-                    <li>
-                        <a href="/category/southindian"><span class="mobile_titles"> SOUTH INDIAN T-SHIRTS</span></a>
-                    </li>
-
-                    <li>
-                        <a href="/category/sports"><span class="mobile_titles"> SPORTS / GYM FREAK T-SHIRTS</span></a>
-                    </li>
-         
+          <li>
+            <a href="/category/sports"><span class="mobile_titles"> SPORTS / GYM FREAK T-SHIRTS</span></a>
+          </li>
         </ul>
 
-        <ul class="list-unstyled CTAs">
-            <li><a href="" class="download">About Us</a>
-            </li>
+        <ul class="list-unstyled ">
+           <a class="ml-2" href="/category/sports"><span class="mobile_titles"> SPORTS / GYM FREAK T-SHIRTS</span></a> 
         </ul>
     </nav>
     <div class="overlay"></div>
@@ -163,22 +160,9 @@
             <span><i class="fas fa-bars"></i></span>
             </button>
 
-            <a class="navbar-brand" id="navbar-brand" href="/"><img style="width: 2rem;" src="/img/logo/logo2.png"> <img style="width: 5rem; padding-bottom: 4px;" src="/img/logo/logo.png"> </a>
-      
-            <a class="nav-link menu cart_mobile_view" href="/cart">
-              <i class="fa fa-shopping-cart"></i>
-              <% if(session.cart) { %>
-                <span class="badge badge-danger" ><%= session.cart.totalQty %></span>
-              <% } %>
-            </a>
+            <a class="navbar-brand" id="navbar-brand" href="/"><!-- <img style="width: 2rem;" src="/img/logo/logo2.png"> --> <img style="width: 5rem; padding-bottom: 4px;" src="/img/logo/logo.png"><span class="badge badge-pill badge-warning ml-2" style="font-size: 10px; position: absolute;">BETA</span> </a>
 
-            
-
-            <!-- <button type="button" id="sidebarCollapse" class="btn btn-info nav-item"> <i class="glyphicon glyphicon-align-left"></i>
-            <span><i class="fas fa-bars"></i></span>
-            </button> -->
-            
-            <div style="margin-left: 5em;" class="collapse navbar-collapse  " id="navbarNav">
+            <div style="margin-left: 5em;" class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ">
                 
                 <li class="nav-item madedropdown">
@@ -257,8 +241,8 @@
             </div>
 
             
-            <div class="collapse navbar-collapse justify-content-end" id="bs-example-navbar-collapse-1">
-                <ul class="navbar-nav ">
+            <div class="justify-content-end" id="bs-example-navbar-collapse-1">
+                <ul class="navbar-nav mobile_icons">
           
           <% if(currentUser && currentUser.isAdmin){ %>
             <li>
@@ -271,13 +255,16 @@
           <%}%>
 
           
-          <div id="cart-status-header">
+          <li id="cart-status-header" class="nav-item">
             <%include ../ajax/cartCount%>
-          </div>
+          </li>
 
-          <div id="user-status-header">
+          
+          <li id="user-status-header" class="nav-item">
             <% include ../ajax/userStatus %>
-          </div>
+          </li>
+          
+
 
 
           <!-- end up here -->
@@ -293,6 +280,9 @@
       </div>
     </div>
   </nav>
+
+  
+  
 
         <!--feedback button-->
 

@@ -145,6 +145,7 @@
   	.address-system{ display: none; }
   	.mobile-hide{ display: none }
   	#padding-new-page{ display: none; }
+  	
 }
 
 @media screen and (min-width: 800px) and (max-width: 3500px) {
@@ -154,6 +155,34 @@
 	.add-font{font-size: 6rem;}
 	.add-con-font{margin-left: 1.2em; margin-top: 1.2em;}
 	.web-view {display: none;}
+	#sidebarCollapse{display: none;}
 
 
+}
+
+@media (min-width: 8px) 
+{
+	.navbar-expand-md .navbar-nav 
+	{
+	flex-direction: row;
+
+	}
+	.navbar-brand
+	{
+		margin-right: 1rem;
+	}
+	.navbar-nav .nav-link {
+    /* padding-right: 0; */
+    /* padding-left: 0; */
+    padding-right: .2rem;
+    padding-left: .2rem;
+}
+}
+@media (max-width: 800px) {
+.navbar-expand-md .navbar-nav {
+flex-direction: row;
+}
+.navbar-brand{
+	margin-right: 5rem;
+}
 }

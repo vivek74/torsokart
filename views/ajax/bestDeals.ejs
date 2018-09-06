@@ -1,12 +1,12 @@
 <div class="container card-2 mb-5" style="background-color: white;">
 	<div class="card-body">
-    <h5 style="padding-bottom: 0; margin: 0; color: black;">ALL SHIRTS</h5>
+    <h5 style="padding-bottom: 0; margin: 0; color: black;">BEST DEALS</h5>
   	</div>
 	<div class="row">
 		<% showbestdeals.forEach(function(items){%>
 			<div class="col-lg-3 col-md-3 mt-2 pr-2 col-6 animated slideInUp d-flex padding-new-page">
 				<div class="card flex-fil card-1" style="width: 13rem;">
-					<a target="_blank" href="/category/<%= items.category %>/<%= items._id %>"><img class="card-img-top " src="<%=items.image %>" alt="Card image cap"></a>
+					<a style="width: 10rem; margin: 0 auto;" target="_blank" href="/category/<%= items.category %>/<%= items._id %>"><img class="card-img-top " src="<%=items.image %>" alt="Card image cap"></a>
 					<div class="card-body" id="card-edit">
 		                <p style="margin-bottom:0; text-align: center;"><%= items.name %></p>
 		                <p class="card-text" id="c1" style="color: black; text-align: center; font-weight: bold;">
@@ -17,12 +17,6 @@
 			</div>
 		<%});%>
 	</div>
-	<!-- <div>
-        <div class="ajax-loader-page justify-content-center">
-            <img src="/img/logo/ajax-loader-page.gif" class="img-responsive" />
-            <p style="text-align: center;">Please wait...</p>
-        </div>
-      </div> -->
 	<!-- pagnination of all t-shirts -->
 	<nav class="pb-2" aria-label="Page navigation example" style="padding-bottom: 2em;">
 	  <ul class="pagination justify-content-center mt-5">
@@ -33,7 +27,12 @@
 	    	<% } else { %>
 	    		<li class="page-item"><a class="page-link" onclick='bestDeals(<%=i%>)'><%=i%></a></li>
 	    	<%}%>
-		<%}%>    
+		<%}%>
+		<li class="pl-3">
+	    	<div class="ajax-loader-page justify-content-center">
+            	<img src="/img/logo/ajax-loader-page.gif" class="img-responsive" />
+        	</div>
+        </li>    
 	  </ul>
 	</nav>
 </div>
