@@ -169,7 +169,7 @@
 	}
 	.navbar-brand
 	{
-		margin-right: 1rem;
+		margin-right: 5rem;
 	}
 	.navbar-nav .nav-link {
     /* padding-right: 0; */
@@ -183,6 +183,6 @@
 flex-direction: row;
 }
 .navbar-brand{
-	margin-right: 3rem;
+	margin-right: 1rem;
 }
 }
