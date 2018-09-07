@@ -518,15 +518,15 @@ router.post("/register", function(req, res){
     }
     var newUser = new User({
         username: req.body.username,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
+        //firstName: req.body.firstName,
+        //lastName: req.body.lastName,
         email: req.body.username,
-        phone : req.body.phone,
-        avatar: req.body.avatar,
-        add_firstName: req.body.firstName,
-        add_lastName: req.body.lastName,
-        add_hostalNo: req.body.add_hostalNo,
-        add_roomNo: req.body.add_roomNo,
+        //phone : req.body.phone,
+        //avatar: req.body.avatar,
+        //add_firstName: req.body.firstName,
+        //add_lastName: req.body.lastName,
+        //add_hostalNo: req.body.add_hostalNo,
+        //add_roomNo: req.body.add_roomNo,
         passwordCopy: req.body.password
       });
 

@@ -844,3 +844,6 @@ input:hover, #feedback-comment:hover, input:focus, #feedback-comment:focus {
   float: right;
   visibility: hidden;
 }
+.modal-header{
+  border-bottom: 0px;
+}

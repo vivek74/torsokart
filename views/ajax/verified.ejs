@@ -1,12 +1,13 @@
 
             <li class="nav-item dropdown menu " id="dropdown-edit">
               <a class="nav-link dropdown-toggle menu" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-user" aria-hidden="true"></i> <%=currentUser.firstName%>
+              <i class="fas fa-user" aria-hidden="true"></i> My Account
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/users/<%=currentUser.id%>"><i style="color: #17a2b8;" class="fa fa-user" aria-hidden="true"></i> &nbsp PROFILE</a>
+                  <a class="dropdown-item" href="/users/<%=currentUser.id%>"><i style="color: #17a2b8;" class="fa fa-user" aria-hidden="true"></i> &nbsp Profile</a>
+                  <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="/orders/<%=currentUser.id%>"><i style="color: #17a2b8;" class="fab fa-first-order"></i>&nbsp Orders</a>
-                <div class="dropdown-divider"></div>
+                  <div class="dropdown-divider"></div>
                   <a class="dropdown-item" style="cursor: pointer;" href="/logout"><i style="color: #17a2b8;" class="fas fa-sign-out-alt"></i>&nbsp Logout</a> 
               </div>
             </li>
