@@ -183,6 +183,10 @@
 flex-direction: row;
 }
 .navbar-brand{
-	margin-right: 5rem;
+	margin-right: 6rem;
 }
+}
+
+.mr-4, .mx-4 {
+     margin-right: 0rem!important; 
 }
