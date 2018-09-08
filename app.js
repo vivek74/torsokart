@@ -92,11 +92,11 @@ app.use("/category", categoryRoutes);
 app.use("/category/:category/:id/comments", commentRoutes);
 app.use("/dashbord", dashbordRoutes);
 
-// app.listen(8000, function(){
-//    console.log("server started at 8000");
-// });
-
-app.listen(process.env.PORT, process.env.IP, function(){
-  console.log("server started");
+app.listen(8000, function(){
+   console.log("server started at 8000");
 });
+
+// app.listen(process.env.PORT, process.env.IP, function(){
+//   console.log("server started");
+// });
  
