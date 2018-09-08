@@ -13,8 +13,8 @@ var Banner = require("../models/banner");
 var shortid = require('shortid');
 
 aws.config.update({
-    secretAccessKey: 'All3KDxcLmkaLm1R+DKr4MmdecJThOv0DqbrrHw9',
-    accessKeyId: 'AKIAJOQE45PB6ZPLRSKQ'
+    secretAccessKey: 'secretAccessKey',
+    accessKeyId: 'accessKeyId'
 });
 var app = express(),
     s3 = new aws.S3();
